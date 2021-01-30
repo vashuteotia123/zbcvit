@@ -1,0 +1,139 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+{% block title%}
+Admin | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/odometer@0.4.8/themes/odometer-theme-default.min.css">
+<link rel="stylesheet" href="{% static 'css/admin_style.css' %}">
+
+{% endblock %}
+
+
+
+{% block navbar_wrap %}
+
+{% if message != None  %}
+<div class="alert alert-message-sent alert-success alert-dismissible fade show" data-aos="fade-down" role="alert">
+    <strong></strong> {{ message }}.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+
+<div class="dod" id="odometer">
+    <div class="col-sm" id="registered_user">
+            <h3 align="center">Users Registered for {{title}}</h3>
+
+        <h3 align="center">VITIANS: {{count_reg_usr}}</h3>
+
+            <table class="table table-striped registered_user_table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="left-margin">Name</th>
+                    <th scope="col">Phone No.</th>
+                    <th scope="col">Email ID</th>
+                    <th scope="col">Reg No.</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for user in reg_usr %}
+                  <tr>
+                    <th scope="row">{{  user.user_first_name }} {{ user.user_last_name }}</th>
+                    <td>{{ user.user_phone }}</td>
+                      <th scope="row">{{ user.user_email }}</th>
+                      <td>{{ user.user_reg_no }}</td>
+
+
+                      <td><a href="{% url 'Profile' user_email=user.user_email %}">
+                    <div class="box-3">
+                        <div class="btn btn-three view_profie">
+                            <span> view </span>
+                        </div>
+                    </div>
+                </a>
+                </td>
+
+
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+
+</div>
+<div class="dod" id="odometer">
+    <div class="col-sm" id="registered_user">
+
+
+        <h3 align="center">Non-VITIANS: {{non_vit.count}}</h3>
+
+            <table class="table table-striped registered_user_table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="left-margin">Name</th>
+                    <th scope="col">Phone No.</th>
+                    <th scope="col">Email ID</th>
+                    <th scope="col">College</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for user in non_vit %}
+                  <tr>
+                    <th scope="row">{{  user.first_name }} {{ user.last_name }}</th>
+                    <td>{{ user.phone }}</td>
+                      <th scope="row">{{ user.email_id }}</th>
+                      <td>{{ user.college }}</td>
+
+
+
+
+
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js"></script>
+<script>
+
+    $(document).on('change', '#notification', function () {
+        var x = $('#notification').val()
+        x = x.replace(/\r?\n/g, '<br />');
+        $('#notification').val(x)
+    })
+
+
+        function odo(div, value) {
+            var el = document.querySelector("."+div)
+            var x = 0;
+            od = new Odometer({
+                value: 0,
+                el: el,
+                format: '',
+                theme: 'default'
+            })
+            od.update(value)
+        }
+        odo("total_events","{{ total_events }}");
+        odo("total_resources","{{ total_resources }}");
+        odo("total_admins","{{ total_admins }}");
+        odo("total_team_member","{{ total_users }}");
+        odo("total_registrations","{{ total_registrations }}");
+
+</script>
+{% endblock %}

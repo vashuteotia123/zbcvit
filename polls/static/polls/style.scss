@@ -1,0 +1,85 @@
+html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', 'Roboto';
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-items: center;
+
+}
+
+body {
+    background-color: #fcfcfc;
+    //position: relative;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding-bottom: 2rem;
+}
+
+h1 {
+    // this one is for big headers
+    text-align: center;
+    margin: 0;
+    padding: 4em;
+    color: #0077ff;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+li {
+    list-style-type: circle;
+}
+
+li a {
+    color: #0077ff;
+}
+
+.root {
+    padding: 2rem;
+    justify-content: center;
+    background-color: #f0f2f5;
+    border-radius: 2rem;
+}
+
+form {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.vote-nodes {
+    margin: 1.2rem;
+}
+
+.vote-nodes-results {
+    margin: 2rem;
+}
+
+#submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #0077ff;
+    border: none;
+    color: #ececec;
+    padding: 12px 30px;
+    text-align: center;
+    font-size: 24px;
+    //margin: 4px 2px;
+    //text-decoration: none;
+    cursor: pointer;
+}
+
+.vote-again {
+    text-align: center;
+    padding-top: 2rem;
+}

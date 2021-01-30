@@ -1,0 +1,41 @@
+{% extends 'polls/layout.html' %}
+
+
+{% block title %}
+Results
+{% endblock title %}
+
+</head>
+
+{% block body %}
+<div class="container" align="center">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-arrow-right"></span>{{ question.question_text }}
+                    </h3>
+                </div>
+<ul>
+    <div class="panel-body">
+                    <ul class="list-group">
+    {% for choice in question.choice_set.all  %}
+
+                        <li class="list-group-item">
+                            <div class="radio">
+
+            {{ choice.choice_text }} - {{ choice.votes.count }} vote{{ choice.votes|pluralize }}
+        </div>
+                        </li>
+
+
+    {% endfor %}
+                         </ul>
+                </div>
+
+</ul>
+            </div></div></div></div>
+
+
+{% endblock body %}

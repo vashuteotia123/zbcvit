@@ -1,0 +1,252 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+{% block title%}
+Admin | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/odometer@0.4.8/themes/odometer-theme-default.min.css">
+<link rel="stylesheet" href="{% static 'css/admin_style.css' %}">
+
+{% endblock %}
+
+
+
+{% block navbar_wrap %}
+
+{% if message != None  %}
+<div class="alert alert-message-sent alert-success alert-dismissible fade show" data-aos="fade-down" role="alert">
+    <strong></strong> {{ message }}.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+<!--
+<div class="add_notification" id="add_notification_form">
+    <div class="row">
+        <div class="col-sm col-img " data-aos="zoom-in">
+            <img class="admin_img" src="{% static 'media/admin-port.jpg' %}" alt="" srcset="">
+        </div>
+        <div class="col-sm">
+            <form  data-aos="zoom-in"  action="{% url 'Admin_port' %}" method="POST">
+                <span style="text-align: center;font-size: 7vh;"> Add Notification </span>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="topic">Topic</label>
+                    <input type="text" class="form-control" id="topic" name="topic" placeholder="Enter topic">
+                </div>
+                <div class="form-group">
+                    <label for="notification">Notification</label>
+                    <textarea class="form-control" id="notification" name="notification" rows="3"></textarea>
+                </div>
+                <button type="submit" style="border: 0px; padding: 0; background-color: white;">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Add Notification </span>
+                        </div>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+-->
+<div class="div2">
+    <div class=" other_ports">
+        <span style="text-align: center;font-size: 7vh; text-align: left !important;"> Components</span>
+        <div class="row">
+            <div class="col-sm add_event">
+                <h3>Total Events</h3>
+                <h1 class="total_events"></h1>
+                <a href="{% url 'Event_details' event_id=0 %}">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Add Event </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm add_resources">
+                <h3>Total Resources</h3>
+                <h1 class="total_resources"></h1>
+                <a href="{% url 'Resource_detail' resource_id=0 %}">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Add Resources </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm edit_about">
+                <h3>Total Admins</h3>
+                <h1 class="total_admins"></h1>
+                <a href="#admin_details">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Edit Admins </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm edit_about" >
+                <h3>Total Users</h3>
+                <h1 class="total_team_member"></h1>
+                <a href="#user_details">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Edit Users </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            </div>
+
+            <!--
+            <div class="col-sm add_resources">
+                <h3>Total Insta Posts</h3>
+                <h1 class="total_insta"></h1>
+
+            </div>
+            -->
+        </div>
+    </div>
+
+</div>
+<div class="dod" id="odometer">
+<div class="row" style="text-align: center;">
+    <div class="col-sm" id="user_details">
+        <h3>User Details</h3>
+        <table class="table table-striped user_details_table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">view</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+              <tr>
+                <th scope="row">{{ user.user_email }}</th>
+                <td>{{ user.user_first_name }} {{ user.user_last_name }} </td>
+                <td><a href="{% url  'Profile' user_email=user.user_email %}">
+                    <div class="box-3">
+                        <div class="btn btn-three view_profie">
+                            <span> view </span>
+                        </div>
+                    </div>
+                </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <div class="col-sm" id="admin_details">
+        <h3>Admin Details</h3>
+        <table class="table table-striped admin_details_table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for admin in admins %}
+              <tr>
+                <th scope="row">{{ admin.user_email }}</th>
+                <td>{{ admin.user_first_name }} {{ admin.user_last_name }}</td>
+                <td><a href="{% url 'Profile' user_email=admin.user_email %}">
+                    <div class="box-3">
+                        <div class="btn btn-three view_profie">
+                            <span> view </span>
+                        </div>
+                    </div>
+                </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+    <div class="col-sm" id="registered_user">
+            <h3 align="center">Users Registered for events</h3>
+            <table class="table table-striped registered_user_table" style="width:60%; margin-left:20%; margin-bottom:10%;">
+                <thead>
+                  <tr>
+                    <th scope="col" style="left-margin">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Registered Users</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for event in event_detail %}
+                  <tr>
+                    <th scope="row">{{  event.event_name }} </th>
+                    <td>{{ event.event_start_date }}</td>
+                    <th>{{event.registered_users.count}}</th>
+
+
+                      <td><a href="{% url 'User_registered' event_id=event.id %}">
+                    <div class="box-3">
+                        <div class="btn btn-three view_profie">
+                            <span> view registered </span>
+                        </div>
+                    </div>
+                </a>
+
+                </td>
+
+
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js"></script>
+<script>
+
+    $(document).on('change', '#notification', function () {
+        var x = $('#notification').val()
+        x = x.replace(/\r?\n/g, '<br />');
+        $('#notification').val(x)
+    })
+
+
+        function odo(div, value) {
+            var el = document.querySelector("."+div)
+            var x = 0;
+            od = new Odometer({
+                value: 0,
+                el: el,
+                format: '',
+                theme: 'default'
+            })
+            od.update(value)
+        }
+        odo("total_events","{{ total_events }}");
+        odo("total_resources","{{ total_resources }}");
+        odo("total_admins","{{ total_admins }}");
+        odo("total_team_member","{{ total_users }}");
+        odo("total_registrations","{{ total_registrations }}");
+
+
+
+
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% block extra_css %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+</head>
+{%endblock%}
+{% block navbar_wrap %}
+<body align="center">
+    <div style="padding:4rem;align:center;">
+        <span style="text-align: center;font-size: 7vh; text-align: left !important;">Polls</span>
+        {% block body %}
+
+        {% endblock body %}
+    </div>
+
+</body>
+{% endblock%}
+</html>

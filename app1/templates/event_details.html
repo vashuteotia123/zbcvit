@@ -1,0 +1,170 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+{% block title%}
+Event Details | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/event_details.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+<form class="event_form" accept="{% url 'Event_details' event_id=0 %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Add/Update Event</h2>
+    <div class="form-group">
+        <label for="event_title">Event Title</label>
+        <input type="text" name="event_title" class="form-control" value="{{ title }}" id="event_title">
+    </div>
+    <div class="form-group">
+        <label for="event_desc">Event description</label>
+        <textarea class="form-control" id="event_desc" name="event_desc" rows="3">{{ desc }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="event_start_date">Event Starting date and time</label>
+        <input type="datetime-local" name="event_start_date" class="form-control" value="{{ start_dt_formated }}"
+            id="event_start_date">
+    </div>
+    <div class="form-group">
+        <label for="event_End_date">Event Ending date and time</label>
+        <input type="datetime-local" name="event_end_date" class="form-control" value="{{ end_dt_formated }}"
+            id="event_end_date">
+    </div>
+    <div class="photos_past">
+        <input type="text" class="removed_photo_id" name="removed_photo_id" style="display: none; ">
+
+
+    </div>
+    <div class="form-group">
+        <div class="photos">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" accept="image/*" name="event_photo" id="event_photo">
+        </div>
+        <label for="event_End_date">Show uploded image</label>
+        <button name="add photo" class="form-control" id="Add_photo"><a>
+                <div class="box-3">
+                    <div class="btn btn-three">
+                        <span> Show </span>
+                    </div>
+                </div>
+            </a>
+        </button>
+    </div>
+    <button type="submit" class="add_event">
+        <a>
+            <div class="box-3">
+                <div class="btn btn-three add_event_btn">
+                    <span> Add event </span>
+                </div>
+            </div>
+        </a>
+    </button>
+</form>
+{% if event_id %}
+<div class="event_info">
+
+    <div class="info">
+        <div class="aero">
+            <span class="material-icons">
+                <img src="{% static 'media/aero.svg' %}" alt=""><br>
+                Tap here
+            </span>
+        </div>
+        <div class="content">
+            <h4> <span style="font-weight: 1000; color: white;"> Event Name: </span> {{ title }} </h4>
+            <h4> <span style="font-weight: 1000; color: white;"> Event description: </span> </h4>
+            <div>
+                {{ desc| safe }}
+            </div>
+            <h4><span style="font-weight: 1000; color: white;">Event Starts at: </span> {{ start_dt }} </h4> <br>
+            <h4><span style="font-weight: 1000; color: white;">Event Ends at: </span>{{ end_dt }} </h4>
+            {% if event_link %}
+            <button type="button">
+                <a href="{{ event_link }}">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Register </span>
+                        </div>
+                    </div>
+                    </a>
+                    </button>
+            {% endif %}
+            <br><br>
+            {% if request.session.is_admin %}
+            <button type="button" class="edit_event">
+                <a>
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Edit </span>
+                        </div>
+                    </div>
+                </a>
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    <div class="circle-wrap">
+        <img src="{% static 'media/circle.png' %}" alt="">
+    </div>
+    {% endblock %}
+    {% block extra_js %}
+    <script>
+        $("#Add_photo").on("click", function (e) {
+            e.preventDefault();
+            var imgs = $("#event_photo")[0].files;
+            var img_uploded = ""
+            console.log(imgs)
+            for (i = 0; i < imgs['length']; i++) {
+                img_uploded += '<span>' + '</button><img id="' + i + '" src="' + URL.createObjectURL(imgs[i]) + '"  width="200"  /></span>';
+            }
+            $(".photos").html(img_uploded);
+        })
+
+        $(document).on('click', ".add_event", function () {
+            var x = $('#event_desc').val()
+            x = x.replace(/\r?\n/g, '<br />');
+            $('#event_desc').val(x);
+            formdata = new FormData();
+        });
+        $(document).on("ready", function () {
+            var event_id = "{{ event_id }}";
+            if (event_id == 0) {
+                $(".event_form").css("display", "block")
+                $(".event_info").css("display", "none")
+                $("body").css("background-color", "#f2f8f8")
+            }
+            else {
+                $(".event_form").css("display", "none")
+                $(".event_info").css("display", "block")
+                var x = document.getElementsByClassName("carousel-item")[0];
+                if (x) { x.classList.add("active") }
+            }
+        })
+        $(".edit_event").click(function (event) {
+            $(".event_form").css("display", "block")
+            $(".event_info").css("display", "none")
+            $(".add_event_btn>span").html("Update")
+            $(this).css("display", "none")
+            $("body").css("background-color", "#f2f8f8")
+        });
+        $(".photo_Cross").click(function () {
+            var id = $(this).attr("id")
+            var data = $(".removed_photo_id").val()
+            if (data) {
+                data += "," + id;
+                $(".removed_photo_id").val(data);
+            }
+            else {
+                $(".removed_photo_id").val(id);
+            }
+            $("#" + id).css("display", "none");
+            console.log($(".removed_photo_id").val());
+        });
+
+    </script>
+    {% endblock %}

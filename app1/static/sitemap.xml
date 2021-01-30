@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/events</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/resources/</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/about</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/login</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/is_attending19</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/nonvit_reg</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/login/register</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://zbcvitc.pythonanywhere.com/reset_pas</loc>
+  <lastmod>2021-01-14T14:59:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

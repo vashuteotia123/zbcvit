@@ -1,0 +1,142 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Contest Details | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="{% static 'css/contest.css' %}">
+{% endblock %}
+
+{% block navbar_wrap %}
+{% if message != None  %}
+<div class="alert alert-login  alert-warning alert-dismissible fade show" data-aos="fade-down" role="alert">
+    <strong align="center"></strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+<div class="event_style">
+    <div class="row">
+        <div class="col-sm event_into" data-aos="zoom-out">Upcoming Contests</div>
+        <div class="col-sm event_img" data-aos="zoom-out"><img src="{% static 'media/contest.webp' %}" alt="" srcset="">
+        </div>
+
+        </div>
+</div>
+
+<div class="upcoming_events">
+    <h2 align="center" color="#382549">Google Contests</h2>
+    <div class="owl-carousel">
+  {% for c in response5 %}
+  <div class="owl_inner" data-aos="zoom-in-up">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.event }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">by {{ c.resource.name }}</h6>
+        <p class="card-text">Starts at: {{ c.start | slice:10 }} {{ c.start | slice:"11:16" }} <br> Ends at: {{ c.end | slice:10}} {{ c.end | slice:"11:16" }} </p>
+        <a href="{{ c.href }}" class="square_btn">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div></div>
+<div class="upcoming_events">
+    <h2 align="center" color="#382549">Codechef Contests</h2>
+    <div class="owl-carousel">
+  {% for c in response1 %}
+  <div class="owl_inner" data-aos="zoom-in-up">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.event }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">by {{ c.resource.name }}</h6>
+        <p class="card-text">Starts at: {{ c.start | slice:10 }} {{ c.start | slice:"11:16" }} <br> Ends at: {{ c.end | slice:10}} {{ c.end | slice:"11:16" }} </p>
+        <a href="{{ c.href }}" class="square_btn">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div></div>
+
+<div class="upcoming_events">
+    <h2 align="center" color="#382549">Codeforces Contests</h2>
+    <div class="owl-carousel">
+  {% for c in response2 %}
+  <div class="owl_inner" data-aos="zoom-in-up">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.event }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">by {{ c.resource.name }}</h6>
+        <p class="card-text">Starts at: {{ c.start | slice:10 }} {{ c.start | slice:"11:16" }} <br> Ends at: {{ c.end | slice:10}} {{ c.end | slice:"11:16" }} </p>
+        <a href="{{ c.href }}" class="square_btn">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div></div>
+
+
+<div class="upcoming_events">
+    <h2 align="center" color="#382549">Hackerearth Contests</h2>
+    <div class="owl-carousel">
+  {% for c in response4 %}
+  <div class="owl_inner" data-aos="zoom-in-up">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.event }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">by {{ c.resource.name }}</h6>
+        <p class="card-text">Starts at: {{ c.start | slice:10 }} {{ c.start | slice:"11:16" }} <br> Ends at: {{ c.end | slice:10}} {{ c.end | slice:"11:16" }} </p>
+        <a href="{{ c.href }}" class="square_btn">View</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div></div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/owl.carousel.min.js"></script>
+<script src="{% static 'js/event_firework.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            center: true,
+            stagePadding: 50,
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true,
+                    loop: false
+                },
+                600: {
+                    items: 2,
+                    nav: true,
+                    loop: false
+                },
+                1000: {
+                    items: 3,
+                    nav: true,
+                    loop: false
+                }
+            }
+
+        })
+    });
+
+</script>
+<script>
+    $( "html,h4,.wrapper" ).click(function() {
+    $(".wrapper").load(" .wrapper > *");
+});
+</script>
+{% endblock %}

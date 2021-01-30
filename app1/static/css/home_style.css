@@ -1,0 +1,252 @@
+/* No CSS */
+html {
+  overflow-x: initial;
+}
+
+body {
+  font-size: 80%;
+  font-family: "Times", sans-serif;
+  color: #ffff;
+  background-color: #F7F8FA;
+  position: relative;
+  overflow-x: hidden !important;
+}
+
+.quote {
+  min-height: 50vh;
+  background-color: #F7FFA;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  height: auto;
+  padding-bottom: 5vh;
+  color: white;
+}
+
+.quote .row {
+  width: 100vw !important;
+}
+
+.quote .quot_img {
+  float: left;
+  height: auto;
+
+}
+
+.quote .quote_inner {
+  margin-top: 10vh;
+  margin-left: -20vw;
+  padding-right: 10vw;
+}
+
+.quote .q {
+  font-size: 15vh;
+  color: #363638;
+  line-height: 3vh;
+}
+
+.quote .quote_about {
+  font-size: 5vh;
+  float: right;
+  height: auto;
+  line-height: 5vh;
+  color: #363638;
+}
+
+.quote .author {
+  font-size: 3vh;
+  float: right;
+  font-style: italic;
+}
+
+.quote .sj_img {
+  max-height: 50vh;
+  width: auto;
+  height: auto;
+  margin-left: 5vw;
+}
+
+.home {
+  height: 100vh;
+  width: auto;
+}
+
+.home .home_wrap {
+  z-index: 2 !important;
+  position: relative;
+}
+
+.home .home_wrap .row {
+  width: 100% !important;
+}
+
+.home .home_wrap img {
+
+  float: right;
+  height: 80vh;
+  max-width: 80%;
+  width: auto;
+  margin-top: -80vh;
+}
+
+.home .home_wrap .title {
+  padding: 0% 0% 0% 8%;
+  margin-top: 20vh;
+  line-height: 20vh;
+  font-size: 15vh;
+  font-weight: 500;
+  float: left;
+  font-family: "Times", sans-serif;
+
+}
+
+.learn_wrap {
+  background-color: #F7F8FA;
+}
+
+.learn_wrap .row {
+  padding: 0;
+  margin: 0;
+}
+
+.learn_wrap .row .learn_quot {
+  font-size: 10vh;
+  margin-left: 10vw;
+  color: #363638;
+  margin-top: 13%;
+  line-height: 8.5vh;
+}
+
+.learn_wrap .row .learn_img {
+  height: 70vh !important;
+  width: auto;
+}
+
+.compete_wrap {
+  background-color: #F7F8FA;
+}
+
+.compete_wrap .row {
+  padding: 0;
+  margin: 0;
+}
+
+.compete_wrap .row .compete_quot {
+  font-size: 10vh;
+  margin-right: 10vw;
+  color: #363638;
+  margin-top: 13%;
+  line-height: 8.5vh;
+}
+
+.compete_wrap .row .compete_img {
+  height: 70vh !important;
+  width: auto;
+}
+
+.win_wrap {
+  background-color:#F7F8FA;
+}
+
+.win_wrap .row {
+  padding: 0;
+  margin: 0;
+}
+
+.win_wrap .row .win_quot {
+  font-size: 10vh;
+  margin-left: 15vw;
+  color: #363638;
+  margin-top: 13%;
+  line-height: 8.5vh;
+}
+
+.win_wrap .row .win_img {
+  height: 70vh !important;
+  width: auto;
+}
+
+/* ---- reset ---- */
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 93%;
+  background-color: transparent;
+}
+
+.info {
+  height: 100vh;
+  width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    max-width: 100vw !important;
+  }
+  .home_wrap {
+    max-width: 100vw;
+  }
+  .home_wrap img {
+    margin-top: 0vh !important;
+    float: inline-end !important;
+    height: auto !important;
+    width: auto !important;
+    max-width: 100vw;
+  }
+  .home_wrap .title {
+    margin-top: 15vh !important;
+    font-size: 15vw !important;
+    line-height: 8vh !important;
+  }
+  .quote {
+    margin: 0;
+    padding: 0;
+    padding-top: 5vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .quote .quote_inner {
+    margin: 0;
+    padding: 0;
+    font-size: 10vw;
+    padding-top: 5vh;
+    padding-left: 10vw;
+    padding-bottom: 10vh;
+    padding-right: 2vw;
+  }
+  .quote .quote_about {
+    float: none;
+    overflow-x: hidden;
+  }
+  .quote .sj_img {
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+    max-width: 100vw;
+    margin-left: 0vw;
+    overflow-x: hidden;
+  }
+  .learn_img,
+  .compete_img,
+  .win_img {
+    max-width: 90vw !important;
+    max-height: 45vh !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  .learn_quot,
+  .compete_quot,
+  .win_quot {
+    font-size: 15vw !important;
+    margin-bottom: 10vh !important;
+    margin-left: 5vw !important;
+    margin-right: 0 !important;
+  }
+}
+/*# sourceMappingURL=home_style.css.map */

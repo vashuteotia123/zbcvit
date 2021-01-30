@@ -1,0 +1,88 @@
+
+
+body {
+
+  margin: 0 auto;
+  padding: 0 20px;
+  padding-bottom: 2rem;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  padding: 4em;
+  color: #0077ff;
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: circle;
+}
+
+li a {
+  color: #0077ff;
+}
+
+.root {
+  padding: 4rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+  border-radius: 2rem;
+}
+
+form {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.vote-nodes {
+  margin: 1.2rem;
+}
+
+.vote-nodes-results {
+  margin: 2rem;
+}
+
+#submit-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  background-color: #0077ff;
+  border: none;
+  color: #ececec;
+  padding: 12px 30px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.vote-again {
+  text-align: center;
+  padding-top: 2rem;
+}
+/*# sourceMappingURL=style.css.map */

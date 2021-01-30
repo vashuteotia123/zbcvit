@@ -1,0 +1,227 @@
+/* No CSS */ /*# sourceMappingURL=home_style.css.map */
+html {
+  overflow-x: initial;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Archivo Narrow", sans-serif;
+  color: #595d60;
+  background-color: #f2f8f8;
+  position: relative;
+  overflow-x: hidden !important;
+}
+.quote {
+  min-height: 50vh;
+  background-color: #45565d;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  height: auto;
+  padding-bottom: 5vh;
+  color: white;
+  .row {
+    width: 100vw !important;
+  }
+  .quot_img {
+    float: left;
+    height: auto;
+  }
+  .quote_inner {
+    margin-top: 10vh;
+    margin-left: -20vw;
+    padding-right: 10vw;
+  }
+  .q {
+    font-size: 15vh;
+    color: #ffd60f;
+    line-height: 3vh;
+  }
+  .quote_about {
+    font-size: 5vh;
+    float: right;
+    height: auto;
+    line-height: 5vh;
+  }
+  .author {
+    font-size: 3vh;
+    float: right;
+    font-style: italic;
+  }
+  .sj_img {
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+    margin-left: 5vw;
+  }
+}
+
+.home {
+  height: 100vh;
+  width: auto;
+  .home_wrap {
+    z-index: 2 !important;
+    position: relative;
+    .row {
+      width: 100% !important;
+    }
+    img {
+      margin-top: 0vh;
+      float: right;
+      height: 100vh;
+      max-width: 100%;
+      width: auto;
+      margin-top: -80vh;
+    }
+    .title {
+      padding: 0% 0% 0% 8%;
+      margin-top: 45vh;
+      line-height: 20vh;
+      font-size: 18vh;
+      font-weight: 500;
+      float: left;
+      font-family: "Archivo Narrow", sans-serif;
+    }
+  }
+}
+
+.learn_wrap {
+  background-color: #eeeff3;
+  .row {
+    padding: 0;
+    margin: 0;
+    .learn_quot {
+      font-size: 12vh;
+      margin-left: 10vw;
+      color: #363638;
+      margin-top: 13%;
+      line-height: 8.5vh;
+    }
+
+    .learn_img {
+      height: 70vh !important;
+      width: auto;
+    }
+  }
+}
+.compete_wrap {
+  background-color: #ffff;
+  .row {
+    padding: 0;
+    margin: 0;
+    .compete_quot {
+      font-size: 12vh;
+      margin-right: 10vw;
+      color: #363638;
+      margin-top: 13%;
+      line-height: 8.5vh;
+    }
+    .compete_img {
+      height: 70vh !important;
+      width: auto;
+    }
+  }
+}
+.win_wrap {
+  background-color: #393e5b;
+  .row {
+    padding: 0;
+    margin: 0;
+    .win_quot {
+      font-size: 12vh;
+      margin-left: 15vw;
+      color: #ffff;
+      margin-top: 13%;
+      line-height: 8.5vh;
+    }
+    .win_img {
+      height: 70vh !important;
+      width: auto;
+    }
+  }
+}
+
+/* ---- reset ---- */
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 93%;
+  background-color: transparent;
+}
+
+.info {
+  height: 100vh;
+  width: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    max-width: 100vw !important;
+  }
+  .home_wrap {
+    max-width: 100vw;
+    img {
+      margin-top: 0vh !important;
+      float: inline-end !important;
+      height: 50vh !important;
+      width: auto !important;
+      max-width: 100vw;
+    }
+    .title {
+      margin-top: 30vh !important;
+      font-size: 15vw !important;
+      line-height: 8vh !important;
+    }
+  }
+  .quote {
+    margin: 0;
+    padding: 0;
+    padding-top: 5vh;
+    width: 100vw;
+    overflow: hidden;
+    
+    .quote_inner {
+      margin: 0;
+      padding: 0;
+      font-size: 10vw;
+      padding-top: 5vh;
+      padding-left: 10vw;
+      padding-bottom: 10vh;
+      padding-right: 2vw;
+    }
+    .quote_about {
+      float: none;
+      overflow-x: hidden;
+    }
+    .sj_img {
+      max-height: 50vh;
+      width: auto;
+      height: auto;
+      max-width: 100vw;
+      margin-left: 0vw;
+      overflow-x: hidden;
+    }
+  }
+  .learn_img,
+  .compete_img,
+  .win_img {
+    max-width: 90vw !important;
+    max-height: 45vh !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  .learn_quot,
+  .compete_quot,
+  .win_quot {
+    font-size: 18.5vw !important;
+    margin-bottom: 10vh !important;
+    margin-left: 5vw !important;
+    margin-right: 0 !important;
+  }
+}

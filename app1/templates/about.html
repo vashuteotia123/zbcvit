@@ -1,0 +1,193 @@
+{% extends  'navbar_temp.html' %}
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "5fb12ef9-c723-46b0-9d2d-5e0c468697a9",
+        });
+      });
+    </script>
+{% load static %}
+
+
+{% block title%}
+About| ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+
+
+{% block navbar_wrap %}
+
+<div class="about_home">
+    <div class="about_home_inner">
+        <div class="row">
+            <div class="col-sm about_title float-right ">ZERO BUGS CLUB</div>
+            <div class="col-sm float-left seas_img order-1"> <img src="{% static 'media/vitlog.png' %}" alt=""
+                    srcset=""></div>
+        </div>
+    </div>
+</div>
+<div class="circle-wrap">
+    <img src="{% static 'media/circle.png' %}" alt="">
+</div>
+<div class="mentor">
+    <span style="font-size: 5vw; padding-left: 1vw;">Our Agendas</span><br>
+        <div class="para" data-aos="zoom-in-up" align="left" >
+            <p>•	Replace individual events by a series of well-structured events to aim for a greater outcome.<br>
+•	Bridge the gap between ideas and skills.<br>
+•	Provide exposure to modern frameworks and technologies (which are not covered in the curriculum.)<br>
+•	Increase feasibility even to complete large projects by breaking them down into a series of achievable tasks.<br>
+•	Provide a flexible and dynamic relationship between students and projects.<br>
+•	Follow a product-oriented approach.<br>
+•	Promote peer-to-peer learning among students to enhance the growth of skills.<br>
+•	Provide the students with an environment closer to workplace associations and expectations thus helping them build a better candidature for companies.<br>
+•	Create an environment where-in both the problem statements, as well as the solutions, are provided by the students.<br>
+•	Orientation towards learning and implementing multiple technologies.<br>
+•	Provide acknowledgment to the participants/contributors on successful completion of the goal.<br>
+•	A platform to put forth ideas with a potential to be converted into meaningful products and projects.<br>
+
+</p>
+</div>
+</div>
+<!--
+<div class="mentors">
+    <span style="font-size: 5vw; padding-left: 2vw;">Advisors</span>
+    <div class="owl-carousel">
+        {% for mentor in mentors %}
+        <div class="owl_inner" data-aos="zoom-in-up">
+            <div class="card" style="width: 18rem; padding: 10px;">
+                {% if profile_photo %}
+                <img class="card_img" src="{{ MEDIA_URL }}{{ mentor.user_profile_photo }}" alt="error" srcset="">
+                {% else %}
+                <img class="card_img" src="{% static 'media/user.png' %}"
+                    style=" border-radius: 50%; -webkit-box-shadow: none; box-shadow: none;" alt="" srcset="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ mentor.user_first_name }} {{ mentor.user_last_name }}</h5>
+                    <p class="card-text">Post: {{ mentor.user_post  }}</p>
+                    <button type="button" class="button-view">
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+-->
+<hr>
+<div class="admins" >
+    <span style="font-size: 5vw; padding-left: 2vw;">Team</span>
+    <div class="row resources_content" align="center">
+        {% for admin in admins %}
+        <div class="card"  data-aos="zoom-out">
+            <div class="card-body" style="backgroud-color: #3B678A;">
+                {% if admin.user_profile_photo  %}
+                <img class="card_img"  style="border-radius: 50%; pointer-events:None;"  src="{{ MEDIA_URL }}{{ admin.user_profile_photo }}" alt="error" srcset="">
+                {% else %}
+                <img class="card_img" src="{% static 'media/user.png' %}"
+                    style=" border-radius: 50%; -webkit-box-shadow: none; box-shadow: none;" alt="" srcset="">
+                {% endif %}
+                <div class="card-body" >
+                    <h3 class="card-title">{{ admin.user_first_name }} {{ admin.user_last_name }}</h3>
+                    <h5 class="card-text">{{ admin.user_post  }}</h5>
+                    <div class="container">
+                    <hr color="black">
+                    <div class="row">
+                        <a href="mailto: {{ admin.user_email }}" class="fa fa-envelope" style="font-size:40px; margin:4px"></a>
+                        <a href="tel: {{ admin.user_phone }}" class="fa fa-phone" style="font-size:40px; margin:4px"></a>
+
+                        <a href="https://wa.me/91{{ admin.user_phone}}" class="fa fa-whatsapp" style="font-size:40px; margin:4px";></a>
+                        <a href={{admin.user_insta}} class="fa fa-instagram" style="font-size:40px;margin:4px"; ></a>
+                        <a href={{admin.user_github}} class="fa fa-github" style="font-size:40px; margin:4px";></a>
+                        <a href={{admin.user_linkedin}} class="fa fa-linkedin" style="font-size:40px; margin:4px";></a>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="connect_us">
+    <h5 style="margin-top:1vh; margin-left:1vw;"> Contact us:</h5>
+        <div class="row"  >
+                        <a href="mailto:zbcvitc@gmail" class="fa fa-envelope" style="font-size:40px; margin:4px; padding:2vw;color:white"></a>
+                        <a href="https://www.linkedin.com/company/zero-bugs-club/" class="fa fa-linkedin" style="font-size:40px; margin:4px; padding:2vw; color:white"></a>
+                        <a href="https://github.com/Zero-Bugs-Club" class="fa fa-github" style="font-size:40px; margin:4px; padding:2vw; color:white"></a>
+                    </div>
+                    <div class="row">
+
+                        <a href="https://wa.me/917417882732" class="fa fa-whatsapp" style="font-size:40px; margin:4px; padding:2vw; color:white"></a>
+                        <a href="https://www.instagram.com/zbc_vitc/" class="fa fa-instagram" style="font-size:40px;margin:4px;padding:2vw; color:white" ></a>
+                    </div>
+
+
+<br><!--
+College Address:
+<div>
+    <a class="text-light" href="https://goo.gl/maps/w88J1NuDcHAbA9oQ7">
+    Kelambakkam - Vandalur Rd, Rajan Nagar, Chennai, Tamil Nadu 600127
+    </a>
+</div>
+</div>-->
+<footer>
+
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center" style="color: white;">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is developed by Vishal Teotia
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+		</footer>
+
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            center: true,
+            stagePadding: 50,
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true,
+                    loop: false
+                },
+                600: {
+                    items: 2,
+                    nav: true,
+                    loop: false
+                },
+                1000: {
+                    items: 3,
+                    nav: true,
+                    loop: false
+                }
+            }
+
+        })
+    });
+
+</script>
+{% endblock %}

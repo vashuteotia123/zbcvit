@@ -1,0 +1,79 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Resources | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/resources_style.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+<div class="row resource_home">
+    <div class="col-sm resource_title">
+        Resources
+    </div>
+    <div class="col-sm resource_img">
+        <img style="pointer-events: None;" src="{% static 'media/resources.webp' %}" alt="" srcset="">
+    </div>
+</div>
+<div style="max-width: 100vw !important; padding-right: 3vw; ">
+    <form class="form-inline float-right" method="POST" action="{% url 'Resources' %}">
+        {% csrf_token %}
+        <input class="form-control search_input" name="search" type="search" placeholder="Search" aria-label="Search">
+        <button class="my-2 my-sm-0 button-search" type="submit">
+            <a>
+                <div class="box-3" >
+                    <div class="btn btn-three">
+                        <span >Search</span>
+                    </div>
+                </div>
+            </a>
+        </button>
+    </form>
+</div>
+
+<div class="row resources_content" align="center">
+    {% for r in resources %}
+    <div class="col-sm resources_card" style="position:relative;">
+        <div class="card" style="width: 18rem; height: 211px; box-shadow: 10px 10px 6px -6px #000;" data-aos="zoom-out">
+            <div class="card-body" style="backgroud-color: white;">
+                <h5 class="card-title">{{ r.resource_name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ r.resource_date_time }} </h6>
+                <p class="card-text">{{  r.resource_content |slice:":100"| safe  }}...</p>
+                <div style="position:absolute; bottom: 2vh;">
+                    <a href="{{ r.resource_link }}" class="square_btn">View</a>
+                    {% if request.session.is_admin  %}
+                    <a href="{% url 'Resource_detail' resource_id=r.id %}" class="square_btn">Edit</a>
+                    <a  href="{% url 'Delete_resource' resource_id=r.id %}" class="square_btn">Delete</a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+<footer>
+<div style="color:#00D5CD">
+			<div class="container" >
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center" style="color: black;">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is developed by Vishal Teotia
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+		</div>
+		</footer>
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+{% endblock %}

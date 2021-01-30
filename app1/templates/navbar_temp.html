@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta name="google-site-verification" content="iIbZcRJi6Jm2c2Rt-0eKhHb_AJZuEHK_VSSZnJ7RmFI" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap">
+  <link rel="stylesheet" href="{% static 'css/nav_style.css' %}" />
+  <link rel="shortcut icon" href="{% static 'media/Black_logo.jpeg' %}">
+  <!-- Resource style -->
+
+  <!-- Modernizr -->
+  {% block extra_css %} {% endblock %}
+  <title>{% block title%}{% endblock %}</title>
+
+
+</head>
+
+<body >
+  <header>
+    <div class="header_wrap">
+      <a class="cd-logo" href="{% url 'Home' %}"><img src="{% static 'media/red_logo.png' %}" alt="Logo" /></a>
+    </div>
+  </header>
+  <nav>
+      <!--
+    <div class="notification_wrap loge_out">
+      <div class="notification_icon">
+        <img src="{% static 'media/notification.png' %}" alt="" srcset="" />
+        {% if notifications_obj %}
+        <span class="notification_badge">{{ notifications_obj|length }}</span>{% endif %}
+      </div>
+      <ul>
+
+      </ul>
+    </div>
+    -->
+    <ul class="cd-primary-nav">
+      <a class="cd-logo" href="{% url 'Home' %}"><img src="{% static 'media/wl.png' %}" alt="Logo" /></a>
+      <li class="loge_out"><a href="{% url 'Profile' user_email='my_profile' %}">Profile</a></li>
+      <li><a href="{% url 'Home' %}">Home</a></li>
+      <li class="admin"><a href="{% url 'Admin_port' %}">Admin</a></li>
+      <li><a href="{% url 'Events_port' %}">Events</a></li>
+      <!--
+      <li><a href="https://zbcvitc.pythonanywhere.com/polls">Polls</a></li>
+      -->
+      <li><a href="{% url 'contests' %}">Contests</a></li>
+      <li><a href="{% url 'Resources' %}">Resources</a></li>
+      <li><a href="{% url 'About' %}">About</a></li>
+      <!--<li><a href="{% url 'Insta' %}">Insta Posts</a></li>
+      <li><a href="http://vtopcc.vit.ac.in/vtop/">V-top</a></li>-->
+      <span class="loge_in">
+        <li> <a href="{% url 'Login' %}">Login</a></li>
+      </span>
+      <span class="loge_out">
+        <li><a href="{% url 'Logout' %}">Log out</a></li>
+      </span>
+      <div class="connect_pc">
+        <a href="https://www.instagram.com/zbc_vitc/" class="fa fa-instagram" style="font-size:40px; margin:4px"></a>
+        <a href="https://wa.me/917417882732?text=Please feel free to ask" class="fa fa-whatsapp" style="font-size:40px; margin:4px"></a>
+        <a href="mailto:zbcvitc@gmail.com"class="fa fa-envelope" style="font-size:40px; margin:4px;"></a>
+        <a href="https://www.linkedin.com/company/zero-bugs-club/"class="fa fa-linkedin" style="font-size:40px; margin:4px;"></a>
+        <a href="https://github.com/Zero-Bugs-Club"class="fa fa-github" style="font-size:40px; margin:4px;"></a>
+      </div>
+    </ul>
+  </nav>
+
+  <main class="cd-content">
+    {% block navbar_wrap %} {% endblock %}
+  </main>
+  <!-- cd-content -->
+
+  <div class="cd-overlay-nav">
+    <span></span>
+  </div>
+  <!-- cd-overlay-nav -->
+
+  <div class="cd-overlay-content">
+    <span></span>
+  </div>
+  <!-- cd-overlay-content -->
+
+  <a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script fadetoggle src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- stats.js lib -->
+  <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+  <script src="{% static 'js/jquery-2.1.1.js' %}"></script>
+  <script src="{% static 'js/velocity.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <!-- Resource jQuery -->
+  <script src="{% static 'js/nav_control.js' %}"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    var x = ""
+    var noti = "";
+    AOS.init();
+    //console.log($("li").hasClass("loge_in"))
+    function ajaxcall(e) {
+      $.ajax({
+        url: "{% url 'Navbar_restructure' %}",
+        success: function (data) {
+          x = JSON.parse((data));
+          noti = "";
+          console.log(x)
+          if (x[0].messaage == 'loged_in') {
+            console.log("yes")
+            $(".loge_in").css("display", "none");
+            $(".loge_out").css("display", "block");
+            for (i in x[1].New_notifications) {
+              noti += '<li>' +"<div> <br> <br> New Notifications <br><br> </div>"+
+                '<div class="alert alert-message alert-dismissible fade show" role="alert" id="'+x[1].New_notifications[i].id +'">' +
+                '<h4 class="alert-heading">' + x[1].New_notifications[i].topic +
+                '<button type="button" id="' + x[1].New_notifications[i].id + '" class="close close_notification" data-dismiss="alert" aria-label="Close">' +
+                '<span aria-hidden="true">&times;</span>' +
+                '</button>' +
+                '</h4>' +
+                '<p>' +
+                x[1].New_notifications[i].content +'<br>'+'<br>'+
+                '</p>' +
+                '</div>' +
+                '<hr />' + '</li>' + '\n'
+            }
+            if(x[1].New_notifications.length==0){
+              noti += '<li>' +
+                '<div class="alert alert-message alert-dismissible fade show" role="alert">' +
+                '<h4 class="alert-heading">' + "You are up to date" +
+                '</h4>' +
+                '<p>' +
+                "You have seen all notification" +
+                '</p>' +
+                '</div>' +
+                '<hr />' + '</li>' + '\n'
+            }
+            if(x[1].Old_notifications.length!=0){
+              noti+="<div> <br> <br> Seen notifications <br><br> </div>"
+              for (i in x[1].Old_notifications) {
+                noti += '<li>' +
+                  '<div class="alert alert-message alert-dismissible fade show" role="alert" id="'+x[1].Old_notifications[i].id +'" >' +
+                  '<h4 class="alert-heading">' + x[1].Old_notifications[i].topic +
+                  '</h4>' +
+                  '<p>' +
+                  x[1].Old_notifications[i].content +'<br>'+'<br>'+
+                  '</p>'  +
+                  '</div>' +
+                  '<hr />' + '</li>' + '\n'
+              }
+            }
+            $(".notification_wrap>ul").empty()
+            $(".notification_wrap>ul").html(noti);
+            if (x[0].is_admin == true) {
+              $(".admin").css("display", "block");
+
+
+             }
+             else{
+               $(".admin").css("display", "none");
+
+             }
+
+          }
+          else {
+            console.log("nonooo")
+            $(".loge_in").css("display", "block");
+            $(".loge_out").css("display", "none");
+            $(".admin").css("display", "none");
+          }
+
+        },
+        /*
+        error: function (err_data) {
+          alert("navbar/notification referesh error " + err_data);
+        }*/
+      });
+      setTimeout(function () { ajaxcall(event) }, 10000);
+    }
+    $(document).ready(function () {
+      ajaxcall(event);
+    });
+
+    $(document).on('click', ".close_notification", function () {
+      $.ajax({
+        type: "POST",
+        url: "{% url 'Close_notification' %}",
+        data: {
+          'seen_message_id': $(this).attr("id"),
+          'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+        success: function () {
+          console.log("done")
+        },
+        /*
+        error: function (err_data) {
+          alert("navbar/notification seen/close error " + err_data);
+        }*/
+      });
+    });
+    // Disable inspect element
+$(document).bind("contextmenu",function(e) {
+ e.preventDefault();
+});
+$(document).keydown(function(e){
+    if(e.which === 123){
+       return false;
+    }
+});
+
+
+
+  </script>
+  {% block extra_js %} {% endblock %}
+
+</body>
+
+</html>

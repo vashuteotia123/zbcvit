@@ -1,0 +1,114 @@
+body {
+  background-color: #F8EFE9;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+.resource_home {
+  overflow: hidden;
+  background-color: #F8EFE9;
+  padding: 0;
+  max-width: 100vw;
+}
+.resource_img > img {
+  max-height:60vh;
+  width: auto;
+}
+.resources_content {
+  overflow: hidden;
+  max-width: 100vw;
+}
+.resource_title {
+  overflow: hidden;
+  color: #282E30 ;
+  padding-top: 45vh;
+  padding-left: 1.5vw;
+  font-size: 7.3vw;
+  line-height: 14vh;
+}
+.button-search {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background-color: #FFC107 ;
+}
+.search_form {
+  max-width: 70vw;
+  width: auto;
+  margin-right: 5vw;
+  padding-right: 3vw;
+  padding-bottom: 5vh;
+}
+.search_input {
+  width: 50vw !important;
+  margin-right: 0.5vw !important;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+
+}
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type="text"]:focus,
+[type="text"].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+}
+.resources_content {
+  margin-top: 10vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-bottom: 10vh;
+
+}
+.resources_card {
+  padding: 0;
+  margin: 8px;
+}
+.square_btn{
+    display: inline-block;
+    padding: 7px 20px;
+	border-radius: 25px;
+    text-decoration: none;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+    transition: .4s;
+}
+
+.square_btn:hover {
+    background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+    background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+@media only screen and (max-width: 600px) {
+
+  .resource_title{
+    padding-top: 30vh;
+    padding-left: 7vw;
+    font-size: 18vw;
+    line-height: 8vh;
+  }
+  .resource_img > img {
+    max-width: 100vw !important;
+    height: auto;
+  }
+  .search_form {
+    max-width: 90vw;
+    width: auto;
+    float: none;
+    padding: 2vw !important;
+    margin: 2vw;
+  }
+  .search_input {
+    width: 70vw !important;
+  }
+  .resources_content {
+    max-width: 100vw;
+    overflow: hidden;
+    padding-left: 8vw;
+  }
+  .resources_card{
+    width: 90vw;
+    overflow: hidden;
+  }
+}

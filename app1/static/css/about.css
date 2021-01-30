@@ -1,0 +1,204 @@
+body{
+    background-color: white;
+}
+.about_home{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../media/SEAS.jpg');
+    background-position: center;
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0 92%);
+}
+.about_home_inner{
+    height: 100%;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    color:white;
+}
+.about_home_inner>.row{
+    position: relative;
+    padding-top: 30vh;
+}
+.about_title{
+    padding-right: 0;
+    font-size: 8vw;
+    line-height: 16vh;
+    padding-left: 15vw;
+    border-right:2px solid white ;
+}
+.seas_img>img{
+    height: 40vh;
+    padding: 20px;
+    border-radius: 10%;
+}
+.mentors.admins{
+    height: auto;
+    min-height: 70vh;
+    margin-bottom: 20vh;
+    background-color:white;
+}
+.mentor{
+    height: auto;
+    min-height: 70vh;
+    background-color:white;
+}
+.para{
+    margin-left: 10%;
+    font-size:2.5vh;
+}
+.connect_us{
+    background-color: #011216;
+
+
+}
+.button-view{
+    padding: 0;
+    background-color: transparent;
+    margin: 0;
+    border: 0;
+}
+.connect_us{
+    padding-top: 5vh;
+        padding-left: 2vw;
+        padding-right:2vw;
+
+    color: white;
+    font-size: 1.3vw;
+}
+.connect_us>div>img{
+    height: 5vh;
+    padding: 5px;
+}
+.circle-wrap>img{
+    position: fixed;
+    top: -5vh;
+    left: -2vw;
+    height: 20vh;
+    width: auto;
+    z-index: 1;
+}
+.card_img{
+    height: 25vh;
+    align-self: center;
+    width: 25vh !important;
+}
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type="text"]:focus,
+[type="text"].form-control:focus,
+[contenteditable].form-control:focus {
+}
+.resources_content {
+  margin-top: 10vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-bottom: 10vh;
+
+}
+.resources_card {
+  padding: 0;
+  margin: 8px;
+}
+.card{
+    width: 21.5rem;
+    height: 420px;
+    box-shadow: 10px 10px 6px -6px #000;
+    margin:0 auto;
+    margin-top:5px;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+      overflow-x: hidden !important;
+    }
+    .row{
+        width: 100vw;
+    }
+    .seas_img>img{
+        display: none;
+    }
+    .circle-wrap>img{
+        position: fixed;
+        top: -6vh;
+        left: -13vw;
+        height: 20vh;
+        width: auto;
+        z-index: 1;
+    }
+    .connect_us{
+        padding-top: 5vh;
+        padding-left: 2vw;
+        padding-right:2vw;
+        color: white;
+        font-size: 5vw !important;
+    }
+    .about_title{
+        padding-left: 8vw;
+        font-size: 20vw;
+        line-height: 10vh;
+    }
+    .mentors>span,.admins>span,.mentor>span{
+        font-size: 13vw !important;
+    }
+  .mentor{
+    height: auto;
+    min-height: 70vh;
+
+    background-color:white;
+    }
+    .para{
+        margin-left: 10%;
+        font-size:4.5vw;
+    }
+  .resources_content {
+    max-width: 100vw;
+    overflow: hidden;
+    padding-left: 8vw;
+  }
+  .resources_card{
+    width: 10vw;
+    overflow: hidden;
+  }
+  .card{
+    width: 21.5rem;
+    height: 450px;
+    box-shadow: 10px 10px 6px -6px #000;
+    margin:0 auto;
+    margin-top:5px;
+}
+
+}

@@ -1,0 +1,97 @@
+
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+{% block title%}
+Event Details | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/reset_pass.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+{% if message != None  %}
+<div class="alert alert-login  alert-warning alert-dismissible fade show" data-aos="fade-down" role="alert">
+    <strong align="center"></strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+<img class="  " style="width:30vh;height:auto; display:block; margin-left:auto; margin-right:auto; margin-top:5%;" src="{% static 'media/reset_pass.png' %}">
+<form class="event_form" action="{% url 'Reset_password' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Please enter registered mail ID</h2>
+    <div class="form-group">
+        <label for="mail_id">Email ID</label>
+        <input type="text" name="mail_id" class="form-control"  id="mail_id" style="text-transform: lowercase;">
+    </div>
+    <button type="submit" class="add_event">
+        <a>
+            <div class="box-3">
+                <div class="btn btn-three add_event_btn">
+                    <span> Get Password </span>
+                </div>
+            </div>
+        </a>
+    </button>
+</form>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $("#Add_photo").on("click", function (e) {
+            e.preventDefault();
+            var imgs = $("#event_photo")[0].files;
+            var img_uploded = ""
+            console.log(imgs)
+            for (i = 0; i < imgs['length']; i++) {
+                img_uploded += '<span>' + '</button><img id="' + i + '" src="' + URL.createObjectURL(imgs[i]) + '"  width="200"  /></span>';
+            }
+            $(".photos").html(img_uploded);
+        })
+
+        $(document).on('click', ".add_event", function () {
+            var x = $('#event_desc').val()
+            x = x.replace(/\r?\n/g, '<br />');
+            $('#event_desc').val(x);
+            formdata = new FormData();
+        });
+        $(document).on("ready", function () {
+            var event_id = "{{ event_id }}";
+            if (event_id == 0) {
+                $(".event_form").css("display", "block")
+                $(".event_info").css("display", "none")
+                $("body").css("background-color", "#f2f8f8")
+            }
+            else {
+                $(".event_form").css("display", "none")
+                $(".event_info").css("display", "block")
+                var x = document.getElementsByClassName("carousel-item")[0];
+                if (x) { x.classList.add("active") }
+            }
+        })
+        $(".edit_event").click(function (event) {
+            $(".event_form").css("display", "block")
+            $(".event_info").css("display", "none")
+            $(".add_event_btn>span").html("Update")
+            $(this).css("display", "none")
+            $("body").css("background-color", "#f2f8f8")
+        });
+        $(".photo_Cross").click(function () {
+            var id = $(this).attr("id")
+            var data = $(".removed_photo_id").val()
+            if (data) {
+                data += "," + id;
+                $(".removed_photo_id").val(data);
+            }
+            else {
+                $(".removed_photo_id").val(id);
+            }
+            $("#" + id).css("display", "none");
+            console.log($(".removed_photo_id").val());
+        });
+
+    </script>
+    {% endblock %}

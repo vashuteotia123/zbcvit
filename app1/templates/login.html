@@ -1,0 +1,71 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Log in | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+{% if message != None  %}
+<div class="alert alert-login  alert-warning alert-dismissible fade show" data-aos="fade-down" role="alert">
+    <strong align="center"></strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+<div class="row login-row">
+    <div class="col-sm">
+        <div class="login-photo">
+            <img src="{% static 'media/login.webp' %}" alt="" srcset="">
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="login_div" data-aos="fade-down" data-aos-easing="linear">
+            <form action="{% url 'Login' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="User_Email" name="User_Email" style="text-transform: lowercase;"
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="User_Password" name="User_Password"
+                        placeholder="Password">
+                </div>
+                <button type="submit" class="button-login">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> Login </span>
+                        </div>
+                    </div>
+                </button>
+                <button type="button" class="button-login">
+                    <a href="{% url 'Register' %}">
+                        <div class="box-3">
+                            <div class="btn btn-three">
+                                <span> Register </span>
+                            </div>
+                        </div>
+                    </a>
+                </button><br><br>
+                <a href="{% url 'reset_pass' %}"><small id="emailHelp" class="form-text text-muted">Forgot Password?</small></a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

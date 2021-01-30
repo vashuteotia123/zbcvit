@@ -1,0 +1,28 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Insta Details | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/resources_detail_style.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+<form action="{% url 'Insta_link' insta_id=insta.id %}" method="POST">
+    {% csrf_token %}
+    <h2>Add/Update Insta Link</h2>
+    <div class="form-group">
+        <label for="ilink">Insta link</label>
+        <input type="text" class="form-control" id="iname" name="ilink" value="{{ insta.insta_link }}">
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
+
+
+{% block extra_js %}
+{% endblock %}

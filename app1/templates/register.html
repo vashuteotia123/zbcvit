@@ -1,0 +1,121 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Register | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register_style.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+{% if message != None  %}
+<div class="alert alert-login  alert-warning alert-dismissible fade show" data-aos="fade-down" role="alert">
+  <strong></strong> {{ message }}.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+
+
+<div class="row register-row">
+  <div class="col-sm">
+    <img src="{% static 'media/register.webp'%}" alt="" srcset="">
+  </div>
+  <div class="col-sm" data-aos="zoom-in">
+    <form action="{% url 'Register' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">First name*</label>
+          <input type="text" class="form-control" onchange="input_values()" name="first_name" id="fname"
+            placeholder="abc">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Last name*</label>
+          <input type="text" class="form-control" onchange="input_values()" name="last_name" id="lname"
+            placeholder="xyz">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Email address*</label>
+          <input type="text" class="form-control" id="email" oninput="input_values()" name="email" style="text-transform: lowercase;"
+            placeholder="abc.xyz20xx@vitstudent.ac.in" pattern=".+@vitstudent.ac.in" title="Please provide only VIT e-mail address">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Reg No.*</label>
+          <input type="text" class="form-control" id="regno" oninput="input_values()" name="regno" style="text-transform: uppercase;"
+            placeholder="19PQR1234"  title="Please provide your registration number">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Date of Birth*</label>
+          <input type="date" class="form-control" id="DOB" oninput="input_values()" name="date_of_birth"
+            placeholder="2001/10/04">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Password*</label>
+          <input type="password" class="form-control" oninput="input_values()" name="password" id="password1"
+            placeholder="*****">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Confirm Password*</label>
+          <input type="password" class="form-control" oninput="input_values()" id="password2" placeholder="*****">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Whatsapp Number*</label>
+          <input type="number" class="form-control" oninput="input_values()" name="phone" id="phone" placeholder="-----------">
+        </div>
+      </div>
+      <p>* fields are mandatory</p>
+      <p class="fill-info"></p>
+      <button type="submit" class="button-register isDisabled ">
+        <div class="text-box">
+          <span class="btns btns-white btns-animate isDisabled" >Register</span>
+        </div>
+      </button>
+    </form>
+  </div>
+  <div class="circle-wrap">
+    <img src="{% static 'media/circle.png' %}" alt="">
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  function input_values() {
+    fname = $("#fname").val();
+    lname = $("#lname").val();
+    email = $("#email").val();
+    dob = $("#DOB").val();
+    p1 = $("#password1").val();
+    p2 = $("#password2").val();
+    phone = $("#phone").val();
+    if (fname == "" || lname == "" || email == "" || dob == "" || p1 == "" || p2 == "" || phone == "") $(".fill-info").html("Please fill required information. ");
+    else if (p1 != p2) $(".fill-info").html("Please check your password");
+    if (fname != "" && lname != "" && email != "" && dob != "" && p1 != "" && p2 != "" && phone != "") {
+      if (p1 == p2) {
+        $(".btns").removeClass("isDisabled");
+        $(".button-register").removeClass("isDisabled");
+      }
+      else{
+        if(!$(".btns").hasClass("isDisabled")){$(".btns").addClass("isDisabled");}
+        if(!$(".button-register").hasClass("isDisabled")){$(".button-register").removeClass("isDisabled");}
+        $(".fill-info").html("");
+      }
+    }
+    else{
+      $(".btns").addClass("isDisabled");
+    }
+    //console.log("shdh", fname, lname, email, dob, p1, p2, phone)
+  }
+</script>
+{% endblock %}

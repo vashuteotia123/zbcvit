@@ -1,0 +1,139 @@
+body{
+    background: rgba(71, 57, 112,1);
+    color: white;
+}
+.col-sm>img{
+    height: 100vh;
+    width: auto;
+}
+.col-sm>form{   
+    padding: 10vh 5vw 8vw 3vw;
+}
+.circle-wrap>img{
+    position: fixed;
+    top: -5vh;
+    left: -2vw;
+    height: 20vh;
+    width: auto;
+    z-index: 1;
+}
+.alert-login{
+    position: absolute; 
+    top: 7vh !important;
+    height: auto;
+    text-align: center;
+    width: 50vw;
+    left: 25vw;
+    z-index: 2;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
+}
+
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed !important;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+}
+
+.button-register {
+    border: 0%;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btns,
+.btns:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+}
+
+.btns:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btns:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btns-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btns::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btns-white::after {
+    background-color: #fff;
+}
+
+.btns:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btns-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    body {
+      overflow-x: hidden !important;
+    }
+    .row{
+        width: 100vw;
+    }
+    .col-sm>img{
+        height: auto;
+        width: 100vw;
+    }
+    .col-sm>form{   
+
+        padding: 10vh 5vw 15vh 5vw;
+
+    }
+    .circle-wrap>img{
+        position: fixed;
+        top: -6vh;
+        left: -13vw;
+        height: 20vh;
+        width: auto;
+        z-index: 1;
+    }
+  }
+  

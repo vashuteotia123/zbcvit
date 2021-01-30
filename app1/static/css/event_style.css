@@ -1,0 +1,143 @@
+.alert-login {
+  position: absolute;
+  top: 7vh !important;
+  height: auto;
+  text-align: center;
+  width: 50vw;
+  left: 25vw;
+  z-index: 2;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+body {
+  background-color: #F7F8FA;
+}
+
+.row,
+.col-sm {
+  width: 100vw;
+  overflow: hidden;
+}
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+.event_img > img {
+  height: auto;
+  width: 50vw;
+}
+.event_into {
+  overflow: hidden;
+  font-size: 7vw;
+  color: #382549;
+  line-height: 15vh;
+  margin-top: 48vh;
+  margin-left: 3vw;
+}
+.event_style {
+  height: 100vh;
+  background-color:#F7F8FA;
+  max-width: 100vw;
+}
+.circle-wrap > img {
+  position: fixed;
+  top: -5vh;
+  left: -2vw;
+  height: 20vh;
+  width: auto;
+  z-index: 1;
+}
+canvas {
+  position: absolute;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+}
+.upcoming_events,
+.current_events,
+.past_events {
+  padding-top: 10vh;
+  padding-bottom: 8vh;
+  height: auto;
+  width: auto;
+  min-height: 70vh;
+  overflow: hidden;
+}
+.current_events {
+  background-color:#F7F8FA;
+
+  background-repeat: no-repeat;
+  background-size: 100vh;
+  overflow: hidden;
+}
+
+.upcoming_events {
+  background-color:#F7F8FA;
+  background-size: 90vh;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.past_events {
+  background-color:#F7F8FA;
+
+  background-size: 105vh;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.upcoming_events > h1,
+.current_events > h1,
+.past_events > h1 {
+
+  color: #382549;
+}
+.owl_inner {
+  padding-top: 1vh;
+  padding-bottom: 2vh;
+  background-color:  #F7F8FA;
+  border-radius: 5px;
+  margin-bottom: 1vh;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+.card {
+  border: 0;
+  background-color: #F7F8FA;
+
+
+}
+
+.owl-carousel{
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .circle-wrap > img {
+    position: fixed;
+    top: -6vh;
+    left: -13vw;
+    height: 20vh;
+    width: auto;
+    z-index: 1;
+  }
+  .event_into {
+    font-size: 15vw;
+    color: #382549;
+    line-height: 10vh;
+    margin-top: 20vh;
+    margin-left: 3vw;
+  }
+  .event_img > img {
+    height: auto;
+    width: 100vw;
+  }
+  .card-title{
+      font-size: 4vh;
+      color:black;
+
+  }
+}

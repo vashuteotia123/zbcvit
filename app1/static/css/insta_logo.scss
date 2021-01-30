@@ -1,0 +1,170 @@
+*{
+	box-sizing: border-box;
+	&:before, &:after{
+	box-sizing: border-box;
+		}
+}
+.instagram{
+	height: 200px;
+	width: 200px;
+	overflow: hidden;
+	border-radius: 35px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -100px;
+	animation: animate_logo 10s infinite alternate;
+	&::after{
+		content: '';
+		position: relative;
+		display: block;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 2000px;
+		background: linear-gradient(135deg, #5335cf 0%, #de005e 25%, #f66e48 50%, #de005e 75%, #5335cf 100%);
+		animation: animate_bg 10s infinite linear;
+	}
+}
+.logo{
+		>div{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border: #fff 9px solid;
+		z-index: 2;
+			&.logo_light{
+				border: 7px #fff solid;
+				border-radius: 10em;
+				right: 23%;
+				top: 23%;
+				left: auto;
+				animation: animate_light 5s infinite normal;
+			}
+}
+	&_border{
+		border-radius: 35px;
+		width: 74%;
+		height: 74%;
+		margin-top: -37%;
+		margin-left: -37%;
+		animation: animate_border 5s infinite alternate;
+	}
+	&_circle{
+		width: 48%;
+		height: 48%;
+		border-radius: 10em;
+		margin-top: -24%;
+		margin-left: -24%;
+		animation: animate_circle 5s infinite alternate;
+	}
+}
+
+/*list of keyframes*/
+@keyframes animate_bg{
+	0%{
+		top: 0;
+	}
+	50%{
+		top: -1800px;
+	}
+	100%{
+		top: 0;
+	}
+}
+
+@keyframes animate_logo{
+	0%{
+		transform: scale(0);
+		border-radius: 35px;
+	}
+	2.5%{
+		transform: scale(1.1);
+		border-radius: 10em;
+	}
+	5%{
+		transform: scale(1);
+		border-radius: 35px;
+	}
+	96%{
+		transform: scale(1);
+		border-radius: 35px;
+	}
+	98%{
+		transform: scale(1.1);
+		border-radius: 10em;
+	}
+	100%{
+		transform: scale(0);
+	}
+}
+
+@keyframes animate_border{
+	0%{
+		border-radius: 10em;
+		transform: scale(0);
+		opacity: 0;
+	}
+	2%{
+		opacity: 0;
+	}
+	18%{
+		border-radius: 35px;
+		transform: scale(1);
+		opacity: 1;
+	}
+	90%{
+		border-radius: 35px;
+		transform: scale(1);
+	}
+}
+
+@keyframes animate_circle{
+	0%{
+		transform: scale(0);
+		opacity: 0;
+	}
+	5%{
+		transform: scale(0);
+		opacity: 0;
+	}
+	10%{
+		transform: scale(1.3);
+		opacity: 1;
+	}
+	15%{
+		transform: scale(1);
+	}
+	95%{
+		transform: scale(1);
+		background-color: transparent;
+	}
+	97%{
+		transform: scale(1.2);
+		background-color: #ffffff;
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+
+@keyframes animate_light{
+	0%{
+		opacity: 0;
+	}
+	20%{
+		opacity: 0;
+	}
+	25%{
+		opacity: 1;
+	}
+	75%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+/*end of keyframes list*/

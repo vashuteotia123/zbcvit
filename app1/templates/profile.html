@@ -1,0 +1,167 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Profile | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/profie_style.css' %}">
+{% endblock %}
+
+{% block navbar_wrap %}
+
+<div class="profile_div" align="center">
+    {% if profile_photo %}
+    <img src="{{ MEDIA_URL }}{{ profile_photo }}" alt="{{ profile_photo.user_profile_photo }}" srcset="" style="border:2px solid #555">
+    {% else %}
+    <img src="{% static 'media/user.png' %}" style=" border-radius: 50%; -webkit-box-shadow: none; box-shadow: none;"
+        alt="" srcset="">
+    <br>
+    {% endif %}
+    <h2 align="center">{{ fname }} {{ lname }}</h2>
+    <h4 align="center">{{ regno }}</h4>
+    <h4 align="center">{{ post }}</h4>
+    <hr>
+    <a href="mailto: {{ email }}"  class="fa fa-envelope" style="font-size:40px; margin:4px"></a>
+    <a href="tel: {{ phone}}" class="fa fa-phone" style="font-size:40px; margin:4px"></a>
+    <a href="https://wa.me/91{{phone}}" class="fa fa-whatsapp" style="font-size:40px; margin:4px"></a>
+    <hr>
+    <div align="center">
+        <button type="button" class="button-update-profile">
+        <a href="#">
+            <div class="box-3">
+                <div class="btn btn-three">
+                    <span> Edit Profile </span>
+                </div>
+            </div>
+        </a>
+        </button>
+    {% if request.session.is_admin and not is_user %}<!--
+    <button type="button" class="button-delete-profile">
+        <a href="{% url 'Remove_profile' user_email=email %}">
+            <div class="box-3">
+                <div class="btn btn-three">
+                    <span> Delete Profile </span>
+                </div>
+            </div>
+        </a>
+    </button>-->
+
+    {% if is_admin %}
+    <button type="button" class="button-add-as-admin">
+        <a href="{% url 'Remove_admin' user_email=email %}">
+            <div class="box-3">
+                <div class="btn btn-three">
+                    <span> Remove from admin </span>
+                </div>
+            </div>
+        </a>
+    </button>
+    {% else  %}
+    <button type="button" class="button-add-as-admin">
+        <a href="{% url 'Add_as_admin' user_email=email %}">
+            <div class="box-3">
+                <div class="btn btn-three">
+                    <span> give admin rights </span>
+                </div>
+            </div>
+        </a>
+    </button>
+    {% endif %}
+    {% endif %}
+    </div>
+</div>
+<div class="circle-wrap">
+    <img src="{% static 'media/circle.png' %}" alt="">
+</div>
+
+<form class="edit_form" style=" text-align: left; display: none;" action="{% url 'Profile' user_email=email %}"
+    method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="fname">First name</label>
+        <input type="text" class="form-control" id="fname" name="fname" value="{{ fname }}">
+    </div>
+    <div class="form-group">
+        <label for="lname">Last name</label>
+        <input type="text" class="form-control" id="lname" name="lname" value="{{ lname }}">
+    </div>
+    <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="dob" value="{{ dob_formated }}">
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" name="phone" value="{{ phone }}">
+    </div>
+    <div class="form-group">
+        <label for="regno">Reg No.</label>
+        <input type="text" class="form-control" id="regno" name="regno" value="{{ regno }}">
+    </div>
+    {% if request.session.is_admin %}
+    <div class="form-group">
+        <label for="github">Github Profile Link</label>
+        <input type="text" class="form-control" id="github" name="github" value="{{ github }}">
+    </div>
+    <div class="form-group">
+        <label for="linkedin">Linkedin Profie Link</label>
+        <input type="text" class="form-control" id="linkedin" name="linkedin" value="{{ linkedin }}">
+    </div>
+    <div class="form-group">
+        <label for="insta">Insta Profile Link</label>
+        <input type="text" class="form-control" id="insta" name="insta" value="{{ insta }}">
+    </div>
+    <div class="form-group">
+        <label for="profile_photo">Select profile photo</label>
+        <input type="file" class="form-control-file"  accept="image/*" id="profile_photo" name="profile_photo" value="{{ profile_pic }}">
+    </div>
+    {% endif %}
+
+    {% if request.session.is_admin or is_ffc %}
+    <label for="post">Club Department</label>
+    <select class="form-control" name="post" id="post">
+        <option selected>{{post}}</option>
+        <option>Technical</option>
+        <option>Design</option>
+        <option>Content</option>
+        <option>Marketing</option>
+
+    </select><br>
+    {% endif %}
+
+    <!--
+    <div class="form-group">
+        <label for="profile_photo">Select profile photo</label>
+        <input type="file" class="form-control-file" id="profile_photo" name="profile_photo" value={{ profile_photo }}>
+    </div>
+    -->
+    <button type="submit" class="button-update-profile">
+        <a>
+            <div class="box-3">
+                <div class="btn btn-three">
+                    <span> Update </span>
+                </div>
+            </div>
+        </a>
+    </button>
+</form>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+
+
+    $(".button-update-profile").on("click", function () {
+        $(".profile_div").css("display", "none");
+        $(".edit_form").css("display", "block");
+    })
+
+</script>
+{% endblock %}
