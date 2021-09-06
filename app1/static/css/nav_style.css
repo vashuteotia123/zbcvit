@@ -190,18 +190,18 @@ header {
   transition-property: transform;
 }
 .cd-nav-trigger::before {
-  background-color: #595d60;
+  background-color: #323754;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-delay: 0.4s;
-  -moz-transition-delay: 0.4s;
-  transition-delay: 0.4s;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-delay: 0.15s;
+  -moz-transition-delay: 0.1s;
+  transition-delay: 0.15s;
 }
 .cd-nav-trigger::after {
   background-color: #f2f8f8;
@@ -232,12 +232,12 @@ header {
   -ms-transform: scale(1);
   -o-transform: scale(1);
   transform: scale(1);
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-delay: 0.4s;
-  -moz-transition-delay: 0.4s;
-  transition-delay: 0.4s;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-delay: 0.15s;
+  -moz-transition-delay: 0.1s;
+  transition-delay: 0.1s;
 }
 .cd-nav-trigger.close-nav .cd-icon {
   /* user clicks on the .cd-nav-trigger element - transform the icon */
@@ -245,7 +245,7 @@ header {
 }
 .cd-nav-trigger.close-nav .cd-icon::before,
 .cd-nav-trigger.close-nav .cd-icon::after {
-  background-color: #595d60;
+  background-color: #323754;
 }
 .cd-nav-trigger.close-nav .cd-icon::before {
   -webkit-transform: translateY(0) rotate(45deg);
@@ -271,7 +271,7 @@ header {
   width: 100%;
   padding: 80px 5%;
   z-index: 3;
-  background-color: #37474C;
+  background-color: #323754;
   overflow: auto;
   /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
   -webkit-overflow-scrolling: touch;
@@ -293,9 +293,9 @@ header {
   font-size: 1.25rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-transition: color 0.2s;
-  -moz-transition: color 0.2s;
-  transition: color 0.2s;
+  -webkit-transition: color 0.05s;
+  -moz-transition: color 0.05s;
+  transition: color 0.05s;
 }
 .no-touch .cd-primary-nav a:hover {
   color: #f2f8f8;
@@ -456,7 +456,7 @@ header {
   z-index: 2;
 }
 .cd-overlay-nav span {
-  background-color: #595d60;
+  background-color: #323754;
 }
 
 .cd-overlay-content {

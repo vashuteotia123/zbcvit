@@ -92,7 +92,7 @@ Admin | ZBC
                 </a>
             </div>
             <div class="col-sm edit_about" >
-                <h3>Total Users</h3>
+                <h3>Total Members</h3>
                 <h1 class="total_team_member"></h1>
                 <a href="#user_details">
                     <div class="box-3">
@@ -103,7 +103,20 @@ Admin | ZBC
                 </a>
             </div>
 
+
+            <div class="col-sm add_event">
+                <h3>Ideas Pitched</h3>
+                <h1>{{total_ideas}}</h1>
+                <a href="{%url 'idea_show' %}">
+                    <div class="box-3">
+                        <div class="btn btn-three">
+                            <span> See Ideas </span>
+                        </div>
+                    </div>
+                </a>
             </div>
+
+
 
             <!--
             <div class="col-sm add_resources">
@@ -240,8 +253,9 @@ Admin | ZBC
         odo("total_events","{{ total_events }}");
         odo("total_resources","{{ total_resources }}");
         odo("total_admins","{{ total_admins }}");
-        odo("total_team_member","{{ total_users }}");
+        odo("total_team_member","{{ total_members }}");
         odo("total_registrations","{{ total_registrations }}");
+        odo("total_ideast","{{ total_ideas }}");
 
 
 

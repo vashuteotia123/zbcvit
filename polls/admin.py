@@ -2,7 +2,6 @@ from django.contrib import admin
 
 from .models import Question, Choice
 
-
 class ChoiceInline(admin.TabularInline):
     # basically it says to Django : Choice Obj are edited on admin site, render 3 choices forms
     model = Choice
@@ -24,7 +23,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
     # displaying deafult django filters for published date
     list_filter = ['pub_date']
-    
+
     # added search form for better UX and faster and precise searching/filtering
     search_fields = ['question_text']
 

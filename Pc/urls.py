@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('app1.urls')),
     path('polls/',include('polls.urls')),
-]
+    path('tasks/',include('tasks.urls')),
+    ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.STATIC_ROOT)

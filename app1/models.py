@@ -15,13 +15,13 @@ class User(models.Model):
     is_ffcs=models.BooleanField(default=False)
     user_join_date=models.DateTimeField(auto_now_add=True)
     user_post=models.CharField(max_length=50,default="user")
-    user_github=models.CharField(max_length=5000,blank=True)
-    user_linkedin=models.CharField(max_length=5000,blank=True)
-    user_insta=models.CharField(max_length=5000,blank=True)
-    user_profile_photo=models.ImageField(upload_to="profile/",blank=True)
-    events_reg=models.ManyToManyField('Event',related_name="events_id",blank=True)
-    #user_Codechef_id=models.CharField(max_length=50,blank=True)
-    #user_Codeforces_id=models.CharField(max_length=50,blank=True)
+    user_github=models.CharField(max_length=5000,blank=True,null=True)
+    user_linkedin=models.CharField(max_length=5000,blank=True,null=True)
+    user_insta=models.CharField(max_length=5000,blank=True,null=True)
+    user_profile_photo=models.ImageField(upload_to="profile/",blank=True,null=True)
+    events_reg=models.ManyToManyField('Event',related_name="events_id",blank=True,null=True)
+    user_Codechef_id=models.CharField(max_length=50,null=True,blank=True)
+    user_Codeforces_id=models.CharField(max_length=50,null=True,blank=True)
 
 
 
@@ -64,9 +64,23 @@ class Attendance(models.Model):
     attendee = models.ForeignKey(User, on_delete=models.CASCADE, related_name='attending',primary_key=True,unique=False)
     is_attending = models.BooleanField(default=False)
 
+
+class recruitment(models.Model):
+    full_name=models.CharField(max_length=50,null=False)
+    regno=models.CharField(max_length=50,null=False)
+    phone=models.CharField(max_length=50,null=False)
+    email=models.CharField(max_length=50,null=False)
+    department=models.CharField(max_length=100,null=False)
+
+
 class Non_vitians(models.Model):
     first_name=models.CharField(max_length=20,null=False)
     last_name=models.CharField(max_length=20,null=False)
     email_id=models.EmailField(max_length=50,null=False)
     phone=models.CharField(max_length=12,null=False)
     college=models.CharField(max_length=50,null=True)
+
+class Idea(models.Model):
+    idea=models.TextField(max_length=5000,null=False)
+    framework=models.CharField(max_length=1000,null=True)
+    user=models.OneToOneField('User',blank=True,on_delete=models.CASCADE,unique=False)

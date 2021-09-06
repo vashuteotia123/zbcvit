@@ -120,14 +120,23 @@ Profile | ZBC
     </div>
     {% endif %}
 
+    <div class="form-group">
+        <label for="ccid">Codechef ID/Username</label>
+        <input type="text" class="form-control" id="ccid" name="ccid" value="{{ ccid }}">
+    </div>
+    <div class="form-group">
+        <label for="cfid">Codeforces ID/Username</label>
+        <input type="text" class="form-control" id="cfid" name="cfid" value="{{ cfid }}">
+    </div>
+
     {% if request.session.is_admin or is_ffc %}
     <label for="post">Club Department</label>
     <select class="form-control" name="post" id="post">
         <option selected>{{post}}</option>
         <option>Technical</option>
-        <option>Design</option>
-        <option>Content</option>
-        <option>Marketing</option>
+        <option>Visual Media</option>
+        <option>Content and Marketing</option>
+        <option>Event</option>
 
     </select><br>
     {% endif %}

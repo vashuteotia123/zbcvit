@@ -57,31 +57,70 @@ About| ZBC
 </p>
 </div>
 </div>
-<!--
-<div class="mentors">
-    <span style="font-size: 5vw; padding-left: 2vw;">Advisors</span>
-    <div class="owl-carousel">
-        {% for mentor in mentors %}
-        <div class="owl_inner" data-aos="zoom-in-up">
-            <div class="card" style="width: 18rem; padding: 10px;">
-                {% if profile_photo %}
-                <img class="card_img" src="{{ MEDIA_URL }}{{ mentor.user_profile_photo }}" alt="error" srcset="">
-                {% else %}
-                <img class="card_img" src="{% static 'media/user.png' %}"
+
+<!--<div class="mentors">-->
+<!--    <span style="font-size: 5vw; padding-left: 2vw;">Faculty</span>-->
+<!--    <div class="owl-carousel">-->
+        <!--{% for mentor in mentors %}-->
+<!--        <div class="owl_inner" data-aos="zoom-in-up">-->
+<!--            <div class="card" style="width: 18rem; padding: 10px;">-->
+                <!--{% if profile_photo %}-->
+                <!--<img class="card_img" src="{{ MEDIA_URL }}{{ mentor.user_profile_photo }}" alt="error" srcset="">-->
+                <!--{% else %}-->
+<!--                <img class="card_img" src="{% static 'media/user.png' %}"-->
+<!--                    style=" border-radius: 50%; -webkit-box-shadow: none; box-shadow: none;" alt="" srcset="">-->
+                <!--{% endif %}-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">Dr. Punitha K</h5>-->
+<!--                    <p class="card-text">Post: Faculty Coordinator</p>-->
+                    <!--<button type="button" class="button-view">-->
+                    <!--</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!--{% endfor %}-->
+<!--    </div>-->
+<!--</div>-->
+<div class="admins" >
+    <span style="font-size: 5vw; padding-left: 2vw;">Faculty</span>
+    <div class="row resources_content" align="center">
+
+        <div class="card"  data-aos="zoom-out">
+            <div class="card-body" style="backgroud-color: #3B678A;">
+
+                <!--<img class="card_img"  style="border-radius: 50%; pointer-events:None;"  src="{{ MEDIA_URL }}{{ admin.user_profile_photo }}" alt="error" srcset="">-->
+
+                <img class="card_img" src="https://i.ibb.co/7nV6HKp/Whats-App-Image-2021-08-05-at-9-54-46-PM.jpg"
                     style=" border-radius: 50%; -webkit-box-shadow: none; box-shadow: none;" alt="" srcset="">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ mentor.user_first_name }} {{ mentor.user_last_name }}</h5>
-                    <p class="card-text">Post: {{ mentor.user_post  }}</p>
-                    <button type="button" class="button-view">
-                    </button>
+
+                <div class="card-body" >
+                    <h3 class="card-title">Dr. Punitha K</h3>
+                    <h5 class="card-text">Faculty Coordinator</h5>
+                    <div class="container">
+                    <hr color="black">
+                    <!--<div class="row">-->
+                    <!--    <a href="mailto: {{ admin.user_email }}" class="fa fa-envelope" style="font-size:40px; margin:4px"></a>-->
+                    <!--    <a href="tel: {{ admin.user_phone }}" class="fa fa-phone" style="font-size:40px; margin:4px"></a>-->
+
+                    <!--    <a href="https://wa.me/91{{ admin.user_phone}}" class="fa fa-whatsapp" style="font-size:40px; margin:4px";></a>-->
+                    <!--    {%if admin.user_insta is not None%}-->
+                    <!--    <a href={{admin.user_insta}} class="fa fa-instagram" style="font-size:40px;margin:4px"; ></a>-->
+                    <!--    {%endif%}-->
+                    <!--    {%if admin.user_github is not None%}-->
+                    <!--    <a href={{admin.user_github}} class="fa fa-github" style="font-size:40px; margin:4px";></a>-->
+                    <!--    {%endif%}-->
+                    <!--    {%if admin.user_linkedin is not None%}-->
+                    <!--    <a href={{admin.user_linkedin}} class="fa fa-linkedin" style="font-size:40px; margin:4px";></a>-->
+                        <!--{%endif%}-->
+
+                    <!--</div>-->
+                    </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
+
     </div>
-</div>
--->
+</div><br><br>
 <hr>
 <div class="admins" >
     <span style="font-size: 5vw; padding-left: 2vw;">Team</span>
@@ -105,9 +144,15 @@ About| ZBC
                         <a href="tel: {{ admin.user_phone }}" class="fa fa-phone" style="font-size:40px; margin:4px"></a>
 
                         <a href="https://wa.me/91{{ admin.user_phone}}" class="fa fa-whatsapp" style="font-size:40px; margin:4px";></a>
+                        {%if admin.user_insta is not None%}
                         <a href={{admin.user_insta}} class="fa fa-instagram" style="font-size:40px;margin:4px"; ></a>
+                        {%endif%}
+                        {%if admin.user_github is not None%}
                         <a href={{admin.user_github}} class="fa fa-github" style="font-size:40px; margin:4px";></a>
+                        {%endif%}
+                        {%if admin.user_linkedin is not None%}
                         <a href={{admin.user_linkedin}} class="fa fa-linkedin" style="font-size:40px; margin:4px";></a>
+                        {%endif%}
 
                     </div>
                     </div>
@@ -123,11 +168,10 @@ About| ZBC
                         <a href="mailto:zbcvitc@gmail" class="fa fa-envelope" style="font-size:40px; margin:4px; padding:2vw;color:white"></a>
                         <a href="https://www.linkedin.com/company/zero-bugs-club/" class="fa fa-linkedin" style="font-size:40px; margin:4px; padding:2vw; color:white"></a>
                         <a href="https://github.com/Zero-Bugs-Club" class="fa fa-github" style="font-size:40px; margin:4px; padding:2vw; color:white"></a>
-                    </div>
-                    <div class="row">
 
-                        <a href="https://wa.me/917417882732" class="fa fa-whatsapp" style="font-size:40px; margin:4px; padding:2vw; color:white"></a>
-                        <a href="https://www.instagram.com/zbc_vitc/" class="fa fa-instagram" style="font-size:40px;margin:4px;padding:2vw; color:white" ></a>
+
+
+                        <a href="https://www.instagram.com/zbcvitc/" class="fa fa-instagram" style="font-size:40px;margin:4px;padding:2vw; color:white" ></a>
                     </div>
 
 

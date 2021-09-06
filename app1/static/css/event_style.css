@@ -18,9 +18,6 @@ body {
   width: 100vw;
   overflow: hidden;
 }
-details > summary {
-  list-style: none;
-}
 details > summary::-webkit-details-marker {
   display: none;
 }
@@ -88,16 +85,16 @@ canvas {
   background-repeat: no-repeat;
   overflow: hidden;
 }
-.upcoming_events > h1,
-.current_events > h1,
-.past_events > h1 {
+.upcoming_events > h3,
+.current_events > h3,
+.past_events > h3 {
 
   color: #382549;
 }
 .owl_inner {
   padding-top: 1vh;
   padding-bottom: 2vh;
-  background-color:  #F7F8FA;
+  background-color:  #ffffff;
   border-radius: 5px;
   margin-bottom: 1vh;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -105,11 +102,74 @@ canvas {
 }
 .card {
   border: 0;
-  background-color: #F7F8FA;
+  background-color: #ffffff;
 
 
 }
-
+.post-module .post-content {
+  position: absolute;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  padding: 30px;
+  -webkti-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
+  -moz-transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
+  -ms-transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
+  -o-transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
+  transition: all 0.3s cubic-bezier(0.37, 0.75, 0.61, 1.05) 0s;
+}
+.post-module .post-content .category {
+  position: absolute;
+  top: -34px;
+  left: 0;
+  background: #e74c3c;
+  padding: 10px 15px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.post-content .title {
+  margin: 0;
+  padding: 0 0 10px;
+  color: #333333;
+  font-size: 26px;
+  font-weight: 700;
+  text-align:center;
+}
+.post-content .sub_title {
+  margin: 0;
+  padding: 0 0 20px;
+  color: #e74c3c;
+  font-size: 20px;
+  font-weight: 400;
+  text-align:center;
+}
+.post-content .description {
+  display: none;
+  color: #666666;
+  font-size: 14px;
+  line-height: 1.8em;
+}
+.post-content .post-meta {
+  margin: 30px 0 0;
+  color: #999999;
+}
+.post-content .post-meta .timestamp {
+  margin: 0 16px 0 0;
+}
+.post-content .post-meta a {
+  color: #999999;
+  text-decoration: none;
+}
+.post-content .description {
+  display: block !important;
+  height: auto !important;
+  opacity: 1 !important;
+}
 .owl-carousel{
   max-width: 100vw;
   overflow: hidden;

@@ -1,0 +1,130 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ZBC | VIT Chennai</title>
+        <meta name="description" content="Zero Bugs Club">
+        <link rel="manifest" href="assets/site.webmanifest" crossorigin="use-credentials">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- twitter card -->
+        <style>
+            body {
+    background: #2C182C;
+
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 20vh;
+}
+
+img {
+    border-radius: 50%;
+}
+
+.profile-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    height: auto;
+    max-width: 100px;
+}
+
+.profile {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+a.profile:hover{
+    color: #000;
+}
+
+.name{
+    padding: 30 30 7 30px;
+}
+
+.motto{
+    padding: 7 30 30 30px;
+    font-weight: normal;
+}
+
+.header{
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    max-width: 90vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 105%;
+}
+
+.links {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid white;
+    border-width: 2px;
+    width: 290px;
+    max-width: 60vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+    text-decoration: none;
+}
+
+a {
+    color: white;
+    transition: color 0.5s;
+}
+
+a.links:hover {
+    color: #000;
+    background: #fff;
+}
+
+.fa_custom {
+    color: #6224f1;
+    margin-top: 60px;
+    text-align: center;
+    width: 100%;
+}
+
+a i:hover{
+    color: #fbdd3b;
+}
+
+.bottom-text {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+        </style>
+
+    </head>
+    <body>
+        <!-- Profile picture-->
+            <img src="https://zbcvitc.pythonanywhere.com/static/media/wl.png" alt="profile picture" class="profile-picture">
+            <!-- Profile name-->
+        <h1 class="profile name">Zero Bugs Club</h1>
+        <!-- Profile motto-->
+        <h2 class="profile motto">Developers Community, VIT Chennai</h2>
+        <!-- Links and Headers-->
+
+            <a href="https://zbcvitc.pythonanywhere.com" target="_blank" class="links">Official Website</a>
+            <a href="https://in.linkedin.com/company/zero-bugs-club" target="_blank" class="links">Linkedin</a>
+            <a href="http://zbcblogs.tech/" target="_blank" class="links">Latest Blogs</a>
+            {%for event in upcoming%}
+            <a href="https://zbcvitc.pythonanywhere.com/events" target="_blank" class="links">{{event.event_name}}</a>
+            {%endfor%}
+
+
+
+    </body>
+
+</html>

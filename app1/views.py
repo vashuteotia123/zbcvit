@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .models import Notification,User,Event,Event_Photos,Resources,Attendance,Non_vitians
+from .models import Notification,User,Event,Event_Photos,Resources,Attendance,Non_vitians,recruitment,Idea
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from django.db.models import Q, F, Max,Count
@@ -13,7 +13,8 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string, get_template
 import csv
 
-# Create your views here.
+
+
 def Home(request):
     return render(request,'index.html')
 
@@ -189,9 +190,12 @@ def profile(request,user_email="my_profile"):
             regno=request.POST.get('regno')
             regno=regno.upper()
             github=request.POST.get('github')
+
             linkedin=request.POST.get('linkedin')
             insta=request.POST.get('insta')
             phone=request.POST.get('phone')
+            ccid=request.POST.get('ccid')
+            cfid=request.POST.get('cfid')
             user.user_first_name=first_name
             user.user_last_name=last_name
             user.user_phone=phone
@@ -199,6 +203,8 @@ def profile(request,user_email="my_profile"):
             user.user_github=github
             user.user_linkedin=linkedin
             user.user_insta=insta
+            user.user_Codechef_id=ccid
+            user.user_Codeforces_id=cfid
             if(post):user.user_post=post
             if(post=="mentor"):
                 user.is_admin=True
@@ -234,6 +240,8 @@ def profile(request,user_email="my_profile"):
             "is_admin":user_details.is_admin,
             "is_ffc":user_details.is_ffcs,
             "post":user_details.user_post,
+            "ccid":user_details.user_Codechef_id,
+            "cfid":user_details.user_Codeforces_id,
         }
         print(datetime.strftime(user_details.user_DOB,'%Y-%m-%d'))
         return render(request,'profile.html',context=context)
@@ -349,13 +357,12 @@ def admin_port(request):
             "admins":admin_details,
             "registered": registered_user,
             "total_events":len(Event.objects.annotate(Count('events_id'))),
-            "total_users":(User.objects.filter(is_admin=False).count()),
+            "total_members":(User.objects.filter(is_ffcs=True).count()),
             "total_admins":(User.objects.filter(is_admin=True).count()),
             "total_resources":Resources.objects.all().count(),
             "total_registrations":(Attendance.objects.filter(is_attending=True).count()),
             "event_detail":event_detail,
-
-
+            "total_ideas":(Idea.objects.all().count()),
         }
         if request.method=='POST':
             message_topic=request.POST.get('topic')
@@ -595,13 +602,16 @@ def reset_pas(request):
 def nonvit(request):
     if request.method == 'POST':
         first_name = request.POST.get('fname')
-        last_name = request.POST.get('lname')
+        last_name = request.POST.get('dis_id')
         email=request.POST.get('email')
         phone = request.POST.get('phone')
         college = request.POST.get('college')
+        if Non_vitians.objects.filter(email_id=email):
+            message="Already registered"
+            return render(request, 'index.html', {'message':message})
         new = Non_vitians(
             first_name=first_name,
-            last_name=last_name,
+            last_name = last_name,
             email_id=email,
             phone=phone,
             college=college,
@@ -611,7 +621,13 @@ def nonvit(request):
     return render(request, 'index.html', {'message':message})
 
 def nonvit_reg(request):
-    return render(request,'nonvit_reg.html')
+    events=Event.objects.all()
+    user_details=User.objects.all()
+    up_coming=events.filter(event_start_date__gt=datetime.now()).order_by("-event_start_date")
+    for eve in up_coming:
+        if eve.non_vitians==True:
+            return render(request,'nonvit_reg.html')
+    return render(request, 'index.html', {'message':"Registrations closed"})
 
 def certificate(request,event_id=0):
     print(event_id)
@@ -676,3 +692,149 @@ def reg_csv(request,event_id=0):
         output1.append([u.first_name + " " + u.last_name, u.email_id, u.phone,u.college])
     writer.writerows(output1)
     return response
+
+def leaderboard(request):
+
+    cc_users=User.objects.exclude(user_Codechef_id="")
+    cf_users=User.objects.filter(user_Codeforces_id__isnull=False)
+    cc_data=[]
+    cf_data=[]
+    for u in cc_users:
+
+
+        url = ("https://competitive-programming-platform.p.rapidapi.com/codechef/"+str(u.user_Codechef_id))
+
+        headers = {
+            'x-rapidapi-key': "350629e7e8msh2a4005052689697p1d2ef5jsnac409665d078",
+            'x-rapidapi-host': "competitive-programming-platform.p.rapidapi.com"
+        }
+        x=requests.request("GET", url, headers=headers)
+        if(x.status_code==200):
+            x=x.json()
+            if 'rating' in x:
+                cc_data.append([x['rating'], u.user_email, u.user_first_name, u.user_last_name, x['stars']])
+
+
+    for u in cf_users:
+        x = requests.get("https://codeforces.com/api/user.info?handles="+str(u.user_Codeforces_id))
+        x=x.json()
+        if(x['status']=="OK"):
+            if 'rating' in x['result'][0]:
+
+                cf_data.append([x['result'][0]['rating'], u.user_email, u.user_first_name, u.user_last_name,x['result'][0]['rank']])
+
+
+    cc_data.sort(reverse=True)
+    cf_data.sort(reverse=True)
+
+    context={
+
+            "ccuser":cc_data,
+            "cfuser":cf_data
+            }
+    return render(request,"leaderborad.html",context=context)
+
+
+def recruit_page(request):
+    return render(request,"registration_form.html")
+
+def recruit(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('fname')
+        email=request.POST.get('email')
+        phone = request.POST.get('phone')
+        college = request.POST.get('college')
+        depatment=request.POST.get('checks')
+        new = recruitment(
+            full_name=first_name,
+            email=email,
+            phone=phone,
+            regno=college,
+            department=depatment,
+            )
+        new.save()
+        message="Registered Successfully"
+    return render(request, 'index.html', {'message':message})
+
+def linktree(request):
+    events=Event.objects.all()
+    up_coming=events.filter(event_start_date__gt=datetime.now()).order_by("-event_start_date")
+    context ={
+        "upcoming" : up_coming,
+        }
+    return render(request, 'linktree.html', context = context)
+
+def register_member(request):
+    if request.method=='POST':
+        first_name=request.POST.get('first_name')
+        last_name=request.POST.get('last_name')
+        regno=request.POST.get('regno')
+        regno=regno.upper()
+        dob=request.POST.get('date_of_birth')
+        password=request.POST.get('password')
+        email=request.POST.get('email')
+        email=email.lower()
+        phone=request.POST.get('phone')
+        check_user=User.objects.filter(pk=email)
+        u1=User(user_first_name=first_name,
+                    user_last_name=last_name,
+                    user_email=email,
+                    user_DOB=dob,
+                    user_phone=phone,
+                    user_reg_no=regno,
+                    user_password=password,
+                    is_admin=False,
+                    is_ffcs=True,
+                    user_join_date=datetime.now())
+        if not check_user.exists():
+            print("innninini")
+            u1.save()
+            return redirect('Login')
+        else :  return render(request,'register_member.html',{ 'message':"user alredy exists"})
+
+    return render(request,'register_member.html')
+
+def idea_page(request):
+    if 'is_logedin' not in request.session:
+        message = "Please Login."
+        return render(request, 'login.html', {'message': message})
+    elif 'is_logedin' in request.session and User.objects.filter(pk=request.session['user_email']).get().is_ffcs==False:
+        message = "Only available for club members."
+        return render(request, 'index.html', {'message': message})
+    else:
+        return render(request, 'idea_sub.html')
+
+def idea_sub(request):
+    idea=request.POST.get('idea')
+    framework=request.POST.get('framework')
+    user_email = request.session['user_email']
+    user=User.objects.filter(pk=user_email).get()
+
+    try:
+        ids=Idea(idea=idea,framework=framework,user=user)
+        ids.save()
+        message='Submitted successfully!'
+        context={
+            "message":message,
+        }
+        return render(request, 'index.html', context=context)
+
+
+    except:
+        Idea.objects.get(user=user)
+        message='Only one submission is allowed.'
+        context={
+        "message":message,
+        }
+        return render(request, 'index.html', context=context)
+
+
+def idea_show(request):
+    if 'is_logedin' in request.session and request.session['is_admin']==True:
+        context={
+            "idea":Idea.objects.all,
+            }
+        return render(request,'idea_show.html',context=context)
+    else:
+        return render(request,'index.html')
+

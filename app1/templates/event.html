@@ -9,7 +9,9 @@ Events | ZBC
 <link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.theme.default.min.css">
 <link rel="stylesheet" href="{% static 'css/event_style.css' %}">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {% endblock %}
 
 {% block navbar_wrap %}
@@ -32,32 +34,53 @@ Events | ZBC
 
         </div>
 </div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
 
+        <!-- Modal Header -->
+        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/newsletter-3025719-2526917.png" >
+
+        <!-- Modal body -->
+        <div class="modal-body" align="center">
+            <h5>For one tap Registration</h5>
+            <a href="https://zbcvitc.pythonanywhere.com/login"><button class="btn btn-primary">Login / SignUp</button></a>
+            <br>
+            <br>
+            <h5>Register without Login</h5>
+          <a href="{% url 'nonvit_reg' %}"><button class="btn btn-primary">Register Here</button></a>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <div class="upcoming_events">
-    <h1 align="center" color="#382549">Upcoming Events</h1>
+    <h3 align="center" color="#382549">Upcoming Events</h3>
     <div class="owl-carousel">
         {% for event in up_coming %}
-        <div class="owl_inner" data-aos="zoom-in-up">{% if event.event_image%}<img class="d-block w-100  " src="/media/{{ event.event_image }}"
+        <div class="owl_inner" data-aos="zoom-in-up">{% if event.event_image%}<img class="d-block w-100  "  src="/media/{{ event.event_image }}"
                    >{% endif %}
             <div class="card">
                 <div class="card-body">
+                     <div class="post-content">
+                <h2 class="title">{{ event.event_name }}</h2>
+                <h3 class="sub_title">{{ event.event_start_date  }}</h3>
 
+                <details>
+                        <summary>Click/tap to know more</summary>
 
-                    <h3 class="card-title">{{ event.event_name }}</h3>
-                    <details>
-
-                    <summary>{{ event.event_details |slice:":50"| safe  }}...(Read more)</summary>
-
-                    <p class="card-text">{{ event.event_details | safe  }}
+                    <p class="description">{{ event.event_details | safe  }}</p>
                     </details>
-                        <hr color="black">
-                    <div>
-                        Will start at: {{ event.event_start_date  }}
 
-                        <!--
-                        Will end at: {{ event.event_end_date  }}-->
-                    </div>
+            </div>
+
+
                     <div >
                         {% if request.session.is_admin %}
 
@@ -85,6 +108,8 @@ Events | ZBC
                             </div>
 
                         {% endif %}
+                        {% if event.non_vitians %}
+                        {%if request.session.user_email %}
                         <br>
 
                             <div class="box-3"><a href="{% url 'attending' event_id=event.id %}">
@@ -94,16 +119,24 @@ Events | ZBC
                             </div>
 
                         <br>
+                        {%endif%}
                         {%if request.session.user_email is None%}
-                        {% if event.non_vitians %}
-                        <div>Non VITian?? <br>
 
-                            <div class="box-3"><a href="{% url 'nonvit_reg' %}">
-                                <div class="btn btn-three" style="background-color: black">
-                                    <span style="color: white;"> Register Here </span>
-                                </div></a>
-                            </div>
+                        <div>
+
+                            <div type="button" class="btn btn-three" style="background-color: black "  data-toggle="modal" data-target="#myModal"><span style="color: white;"> Register </span></div>
                         </div>{%endif%}
+                        {%else%}
+                        <br>
+
+                            <div class="box-3">
+                                <div class="btn btn-three" style="background-color: black">
+                                    <span style="color: white;"> Registration Closed </span>
+                                </div>
+                            </div>
+
+                        <br>
+
                         {%endif%}
 
 
@@ -129,7 +162,7 @@ Events | ZBC
     <h1 align="center" >Ongoing(Only Admin)</h1>
     <div class="owl-carousel">
         {% for event in current %}
-        <div class="owl_inner" data-aos="zoom-in-up">{% if event.event_image%}<img class="d-block w-100  " src="/media/{{ event.event_image }}"
+        <div class="owl_inner" data-aos="zoom-in-up">{% if event.event_image%}<img class="d-block w-100  "  src="/media/{{ event.event_image }}"
                    >{% endif %}
             <div class="card">
                 <div class="card-body">
@@ -191,26 +224,24 @@ Events | ZBC
 {%endif%}
 
 <div class="past_events">
-    <h1 align="center">Past Events</h1>
+    <h3 align="center">Past Events</h3>
     <div class="owl-carousel" data-aos="zoom-in-up">
         {% for event in past %}
-        <div class="owl_inner">{% if event.event_image%}<img class="d-block w-100  " src="/media/{{ event.event_image }}"
+        <div class="owl_inner">{% if event.event_image%}<img class="d-block w-100  "  src="/media/{{ event.event_image }}"
                    >{% endif %}
             <div class="card ">
                 <div class="card-body">
-                    <h3 class="card-title">{{ event.event_name }}</h3>
-                    <details>
-                        <summary>{{ event.event_details |slice:":50"| safe  }}...(Read more)</summary>
+                    <div class="post-content">
+                <h2 class="title">{{ event.event_name }}</h2>
+                <h3 class="sub_title">{{ event.event_start_date  }}</h3>
 
-                    <p class="card-text">{{ event.event_details | safe  }}
+                <details>
+                        <summary>Click/tap to know more</summary>
+
+                    <p class="description">{{ event.event_details | safe  }}</p>
                     </details>
-                        <hr color="black">
-                    <div>
-                        Started at: {{ event.event_start_date  }}
-                        <br>
-                        Ended at: {{ event.event_end_date  }}
-                    </div>
-                    </p><!--
+
+            </div><!--
                     {% if request.session.is_admin %}
 
                         <div class="box-3"><a href="{% url 'Event_details' event_id=event.id %}">
@@ -220,17 +251,7 @@ Events | ZBC
                         </div>
 
                     {% endif %}-->
-                    {%if request.session.user_email is not None%}
-                    <br>
-
-                            <div class="box-3"><a href="{% url 'certificate' event_id=event.id %}">
-                                <div class="btn btn-three" style="background-color: black">
-                                    <span style="color: white;">Certificate </span>
-                                </div></a>
-                            </div>
-
-                        <br>
-                    {%endif%}<!--
+                    <!--
                     <a href="{{ event.event_registation }}">
                         <div class="box-3">
                             <div class="btn btn-three" style="background-color: black">

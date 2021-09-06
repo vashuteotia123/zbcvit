@@ -47,5 +47,14 @@ urlpatterns = [
     path('nonvit_reg',views.nonvit_reg,name='nonvit_reg'),
     path('acd37e8ae18968e8b12<int:event_id>38184527e35a0a',views.certificate,name='certificate'),
     path('contests/',views.contest_details,name='contests'),
-    path('events/reg_csv<int:event_id>',views.reg_csv,name='reg_csv')
+    path('events/reg_csv<int:event_id>',views.reg_csv,name='reg_csv'),
+    path('leaderboard',views.leaderboard,name='leaderboard'),
+    path('recruitment',views.recruit,name="recruit"),
+    path('summer_tech',views.recruit_page,name="recruitment"),
+    path('linktree',views.linktree,name="linktree"),
+    path('member_register',views.register_member,name="member_register"),
+    path('idea_pitch',views.idea_page,name="idea_pitch"),
+    path('idea_sub',views.idea_sub,name="idea_sub"),
+    path('idea_show',views.idea_show,name="idea_show"),
+
 ]

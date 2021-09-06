@@ -16,22 +16,24 @@ Event Reg | ZBC
     {% csrf_token %}
     <h2>Provide Your Details</h2>
     <div class="form-group">
-      <label for="fname">First Name</label>
+      <label for="fname">Full Name</label>
       <input type="text" class="form-control" id="fname" name="fname" required>
-      <label for="lname">Last Name</label>
-      <input type="text" class="form-control" id="lname" name="lname" required>
     </div>
     <div class="form-group">
       <label for="email">Email ID</label>
-        <input type="email" class="form-control" id="email" name="email" required>
+        <input type="email" class="form-control" id="email" name="email" pattern=".+@vitstudent.ac.in" title="Please provide only VIT e-mail address" required>
     </div>
     <div class="form-group">
         <label for="phone">Phone No.</label>
         <input type="tel" class="form-control" id="phone" name="phone" required>
     </div>
     <div class="form-group">
-        <label for="college">College</label>
-        <input type="text" class="form-control" id="college" name="college">
+        <label for="phone">Discord ID</label>
+        <input type="text" class="form-control" id="dis_id" name="dis_id">
+    </div>
+    <div class="form-group">
+        <label for="college">Registration No.</label>
+        <input type="text" class="form-control" id="college" name="college" title="Please provide your registration number" required>
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
   </form>

@@ -6,7 +6,12 @@
     <meta name="google-site-verification" content="iIbZcRJi6Jm2c2Rt-0eKhHb_AJZuEHK_VSSZnJ7RmFI" />
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#323754" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta property="og:title" content="Zero Bugs Club" />
+<meta property="og:description" content="Zero Bugs Club(ZBC) is a developers community at VIT Chennai.We provide exposure to modern frameworks and technologies. And follow a product-oriented approach. " />
+<meta property="og:url" content="https://zbcvitc.pythonanywhere.com" />
+<meta property="og:image" content="https://zbcvitc.pythonanywhere.com/static/media/wl.png" />
   <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -16,6 +21,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap">
   <link rel="stylesheet" href="{% static 'css/nav_style.css' %}" />
   <link rel="shortcut icon" href="{% static 'media/Black_logo.jpeg' %}">
+
   <!-- Resource style -->
 
   <!-- Modernizr -->
@@ -50,6 +56,9 @@
       <li><a href="{% url 'Home' %}">Home</a></li>
       <li class="admin"><a href="{% url 'Admin_port' %}">Admin</a></li>
       <li><a href="{% url 'Events_port' %}">Events</a></li>
+      <!--<span class="loge_out">
+      <li><a href="{% url 'task' %}">Tasks</a></li>
+      </span>-->
       <!--
       <li><a href="https://zbcvitc.pythonanywhere.com/polls">Polls</a></li>
       -->
@@ -65,8 +74,7 @@
         <li><a href="{% url 'Logout' %}">Log out</a></li>
       </span>
       <div class="connect_pc">
-        <a href="https://www.instagram.com/zbc_vitc/" class="fa fa-instagram" style="font-size:40px; margin:4px"></a>
-        <a href="https://wa.me/917417882732?text=Please feel free to ask" class="fa fa-whatsapp" style="font-size:40px; margin:4px"></a>
+        <a href="https://www.instagram.com/zbcvitc/" class="fa fa-instagram" style="font-size:40px; margin:4px"></a>
         <a href="mailto:zbcvitc@gmail.com"class="fa fa-envelope" style="font-size:40px; margin:4px;"></a>
         <a href="https://www.linkedin.com/company/zero-bugs-club/"class="fa fa-linkedin" style="font-size:40px; margin:4px;"></a>
         <a href="https://github.com/Zero-Bugs-Club"class="fa fa-github" style="font-size:40px; margin:4px;"></a>
@@ -225,6 +233,30 @@ $(document).keydown(function(e){
 
 
   </script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCwK_nSKWTea0nrGPJdWN5AE6bjRLoODjQ",
+    authDomain: "zero-bugs-club.firebaseapp.com",
+    databaseURL: "https://zero-bugs-club-default-rtdb.firebaseio.com",
+    projectId: "zero-bugs-club",
+    storageBucket: "zero-bugs-club.appspot.com",
+    messagingSenderId: "526307065477",
+    appId: "1:526307065477:web:d7592972b934023e4d73ec",
+    measurementId: "G-QNLT70NMKH"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+</script>
   {% block extra_js %} {% endblock %}
 
 </body>

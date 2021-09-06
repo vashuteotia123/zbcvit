@@ -1,0 +1,52 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Idea Pitch | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/contest.css' %}">
+<link rel="stylesheet" href="{% static 'css/resources_detail_style.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+
+<div class="event_style">
+    <div class="row">
+       <div class="col-sm event_into" data-aos="zoom-out">Idea Pitching</div>
+
+
+        <div class="col-sm event_img" data-aos="zoom-out"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/making-things-3025705-2526903.png" alt="" srcset="">
+        </div>
+
+        </div>
+</div>
+
+<form action={% url 'idea_sub' %} enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <h2>Submit your Idea</h2>
+    <div class="form-group">
+      <label for="fname">Idea Description</label>
+      <textarea class="form-control" style="height: 200px; " id="idea" name="idea" required></textarea>
+
+    </div>
+    <div class="form-group">
+        <label for="college">Framework to be used (optional)</label>
+        <input type="text" class="form-control" id="framework" name="framework">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br><br><br><br>
+
+{% endblock %}
+
+
+{% block extra_js %}
+{% endblock %}

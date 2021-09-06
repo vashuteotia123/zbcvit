@@ -1,0 +1,70 @@
+{% extends  'navbar_temp.html' %}
+{% load static %}
+
+
+{% block title %}
+Recruitment | ZBC
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/contest.css' %}">
+<link rel="stylesheet" href="{% static 'css/resources_detail_style.css' %}">
+{% endblock %}
+
+
+{% block navbar_wrap %}
+
+<div class="event_style">
+    <div class="row">
+       <div class="col-sm event_into" data-aos="zoom-out">Summer Tech Fest..!!</div>
+
+
+        <div class="col-sm event_img" data-aos="zoom-out"><img src="{% static 'media/recruit.png' %}" alt="" srcset="">
+        </div>
+
+        </div>
+</div>
+
+<form action={% url 'recruit' %} enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <h2>Provide Your Details</h2>
+    <div class="form-group">
+      <label for="fname">Club Name</label>
+      <input type="text" class="form-control" id="fname" name="fname" required>
+
+    </div>
+    <div class="form-group">
+        <label for="college">Name of the person filling the form</label>
+        <input type="text" class="form-control" id="checks" name="checks" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email ID</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone No.</label>
+        <input type="tel" class="form-control" id="phone" name="phone" required>
+    </div>
+
+    <div class="form-group">
+        <label for="college">Position in the club</label>
+        <input type="text" class="form-control" id="college" name="college" required>
+    </div>
+    <!--
+    <h4>Select Departments: </h4>
+    <input type="checkbox" name="checks[]" value="Technical" /><span>Technical</span><br>
+<input type="checkbox" name="checks[]" value="Content and Marketing" /><span>Content and Marketing</span><br>
+<input type="checkbox" name="checks[]" value="Media Creation" /><span>Media Creation</span><br>
+<input type="checkbox" name="checks[]" value="Event Management" /><span>Event Management</span><br><br>-->
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+  <br><br><br><br>
+
+{% endblock %}
+
+
+{% block extra_js %}
+{% endblock %}
