@@ -131,7 +131,12 @@ MEDIA_URL = '/media/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
+<<<<<<< HEAD
 EMAIL_HOST_USER = 'zbcvitc@gmail.com'
 EMAIL_HOST_PASSWORD = 'njhzalfdazsstjvu'
+=======
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+>>>>>>> 98faa1b60bc97ea152fdf6409e1c8b0830be2e87
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
